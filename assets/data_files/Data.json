@@ -1,0 +1,20 @@
+{
+  "games": [
+    {
+      "name": "Elden Ring",
+      "score": 91.96
+    },
+    {
+      "name": "Dota 2",
+      "score": 81.56
+    },
+    {
+      "name": "Cities: Skylines II",
+      "score": 56.31
+    },
+    {
+      "name": "Minecraft Dungeons",
+      "score": 88.87
+    }
+  ]
+}
