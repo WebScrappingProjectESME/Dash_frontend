@@ -34,7 +34,7 @@ class LayoutHeaderPriceComponent extends StatelessWidget {
             const Padding(
                 padding: EdgeInsets.only(left: 25),
                 child: Text(
-                  "Prices",
+                  "Price History",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
