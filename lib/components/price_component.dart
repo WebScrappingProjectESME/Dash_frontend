@@ -44,7 +44,8 @@ class _PriceComponentState extends State<PriceComponent> {
           Flexible(
             //flex: 1,
             child: Container( // Prices
-              child: Text('€€€€€', style: TextStyle(color: Colors.grey)),
+              child: Text('€€€€€', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+              alignment: Alignment.center,
               padding: const EdgeInsets.all(10.0),
               height: 48.0,
               width: double.infinity,
