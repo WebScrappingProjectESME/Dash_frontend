@@ -8,10 +8,7 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 import 'package:main_project/components/score_gauge.dart';
 
-
-
 class ScoreComponent extends StatefulWidget {
-
 
   const ScoreComponent({super.key});
 
@@ -45,9 +42,9 @@ class _ScoreComponentState extends State<ScoreComponent> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const LayoutComponentHeader(),
+              const LayoutComponentHeader(), // Header
 
-              ScoreGauge(value: fetchedScore),
+              ScoreGauge(value: fetchedScore), // Score
             ],
           ),
         )

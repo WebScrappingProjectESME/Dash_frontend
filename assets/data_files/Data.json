@@ -2,19 +2,23 @@
   "games": [
     {
       "name": "Elden Ring",
-      "score": 91.96
+      "score": 91.96,
+      "price": '39,99€'
     },
     {
       "name": "Dota 2",
-      "score": 81.56
+      "score": 81.56,
+      "price": '11,99€
     },
     {
       "name": "Cities: Skylines II",
-      "score": 56.31
+      "score": 56.31,
+      "price": '55,00€'
     },
     {
       "name": "Minecraft Dungeons",
-      "score": 88.87
+      "score": 88.87,
+      "price": '29,99€'
     }
   ]
 }

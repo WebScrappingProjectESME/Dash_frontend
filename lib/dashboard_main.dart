@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Dart pages files
+import 'package:main_project/Components/price_component.dart';
 import 'package:main_project/Components/layout_component.dart';
 import 'package:main_project/Components/score_component.dart';
 import 'package:main_project/Components/sidebar_menu.dart';
@@ -22,31 +23,29 @@ class Dashboard extends StatelessWidget {
 
           const SideBar(),
 
-          FlexColumn(
+          FlexColumn( // Page Column
             childWidgets: [
 
-              FlexRow(
+              FlexRow( // First Row
                 childWidgets: [
-                  const ScoreComponent(),
+                  const ScoreComponent(), // Score Widget
 
-                  Expanded(
+                  Expanded( // Title Widget
                       flex: 3,
                       child: LayoutComponent(Container())
                   )
                 ],
               ),
 
-              FlexRow(
+              FlexRow( // Second Row
                 flexSize: 2,
                 childWidgets: [
-                  Expanded(
+                  Expanded( // Population Widget
                     flex: 2,
                     child: LayoutComponent(Container()),
                   ),
 
-                  Expanded(
-                    child: LayoutComponent(Container()),
-                  )
+                  const PriceComponent(), // History Widget
                 ],
               )
             ],
@@ -89,13 +88,3 @@ class FlexRow extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
