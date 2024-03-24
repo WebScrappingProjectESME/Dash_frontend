@@ -27,7 +27,7 @@ class Dashboard extends StatelessWidget {
 
               FlexRow(
                 childWidgets: [
-                  const ScoreComponent(),
+                  const ScoreComponent(gameId: 2),
 
                   Expanded(
                       flex: 3,
@@ -77,12 +77,12 @@ class FlexRow extends StatelessWidget {
   final List<Widget> childWidgets;
   final int flexSize;
 
-  const FlexRow({this.flexSize = 1,this.childWidgets = const [], super.key});
+  const FlexRow({this.flexSize = 1, this.childWidgets = const [], super.key});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: flexSize,
+        flex: flexSize,
         child: Row(
           children: childWidgets,
         )

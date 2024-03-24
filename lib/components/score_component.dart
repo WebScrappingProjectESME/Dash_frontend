@@ -11,9 +11,9 @@ import 'package:main_project/components/score_gauge.dart';
 
 
 class ScoreComponent extends StatefulWidget {
+  final int gameId;
 
-
-  const ScoreComponent({super.key});
+  const ScoreComponent({super.key, required this.gameId});
 
   @override
   State<ScoreComponent> createState() => _ScoreComponentState();
@@ -27,7 +27,7 @@ class _ScoreComponentState extends State<ScoreComponent> {
     final data = await jsonDecode(response);
 
     setState(() {
-      fetchedScore = data["games"][1]["score"];
+      fetchedScore = data["games"][widget.gameId]["score"];
     });
   }
 

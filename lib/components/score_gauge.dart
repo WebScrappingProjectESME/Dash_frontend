@@ -5,9 +5,9 @@ import 'package:gauge_indicator/gauge_indicator.dart';
 
 
 class ScoreGauge extends StatelessWidget {
-  double value;
+  final double value;
 
-  ScoreGauge({this.value=0, super.key});
+  const ScoreGauge({this.value=0, super.key});
 
   @override
   Widget build(BuildContext context) {
