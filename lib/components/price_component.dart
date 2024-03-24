@@ -38,15 +38,16 @@ class _PriceComponentState extends State<PriceComponent> {
     return Expanded(
         child: LayoutComponent(
       Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           LayoutHeaderPriceComponent(), // Header
 
           Flexible(
+            //flex: 1,
             child: Container( // Prices
-              child: Text('€€€€'),
+              child: Text('€€€€€', style: TextStyle(color: Colors.grey)),
               padding: const EdgeInsets.all(10.0),
               height: 48.0,
+              width: double.infinity,
               decoration: BoxDecoration(
                   color: const Color(0xff171717),
                   borderRadius: BorderRadius.circular(50)),
