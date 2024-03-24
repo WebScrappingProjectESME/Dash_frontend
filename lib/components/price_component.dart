@@ -41,17 +41,32 @@ class _PriceComponentState extends State<PriceComponent> {
         children: [
           LayoutHeaderPriceComponent(), // Header
 
-          Flexible(
-            //flex: 1,
-            child: Container( // Prices
-              child: Text('€€€€€', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10.0),
-              height: 48.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: const Color(0xff171717),
-                  borderRadius: BorderRadius.circular(50)),
+          Flexible( // Price Container (wrapped in a Flex)
+            child: Stack(
+              children: [
+                Container(
+                  child: Text('Elden Ring', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(10.0),
+                  height: 48.0,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: const Color(0xff171717),
+                      borderRadius: BorderRadius.circular(50)),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Text('39€', style: TextStyle(color: Colors.greenAccent, fontWeight: FontWeight.bold)),
+                  alignment: Alignment.center,
+                  //padding: const EdgeInsets.all(30.0),
+                  height: 46.0,
+                  width: 46.0,
+                  decoration: BoxDecoration(
+                      color: const Color(0xff006200).withAlpha(0),
+                      border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
+                      borderRadius: BorderRadius.circular(50)),
+                ),
+              ],
             ),
           ),
         ],
