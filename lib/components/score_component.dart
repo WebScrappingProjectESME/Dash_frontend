@@ -21,7 +21,6 @@ class ScoreComponent extends StatefulWidget {
 
 class _ScoreComponentState extends State<ScoreComponent> {
   double fetchedScore = 0;
-  String fetchedName = "";
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('data_files/Data.json');
@@ -47,7 +46,12 @@ class _ScoreComponentState extends State<ScoreComponent> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
             children: [
-              const LayoutComponentHeader(),
+              LayoutComponentHeader(
+                icon: Icons.bubble_chart,
+                data: "Rating",
+                iconColor: Colors.greenAccent[400],
+                iconColorBg: const Color(0xff006200).withAlpha(80),
+              ),
 
               ScoreGauge(value: fetchedScore),
             ],

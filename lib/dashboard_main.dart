@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
                 childWidgets: [
                   ScoreComponent(gameId: gameId),
 
-                  const InfoComponent(),
+                  InfoComponent(gameId: gameId),
                 ],
               ),
 
