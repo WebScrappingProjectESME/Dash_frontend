@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 
 class LayoutComponentHeader extends StatelessWidget {
-  const LayoutComponentHeader({super.key});
+
+  const LayoutComponentHeader({super.key,});
 
   @override
   Widget build(BuildContext context) {

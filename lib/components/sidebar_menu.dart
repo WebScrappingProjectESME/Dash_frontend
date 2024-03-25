@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 
 // pages
 
+// types def
+typedef IntCallback = void Function(int appId);
+
 
 
 class SideBar extends StatefulWidget {
-  const SideBar({super.key});
+  final IntCallback onButtonSelection;
+
+  const SideBar({super.key, required this.onButtonSelection});
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -15,11 +20,18 @@ class SideBar extends StatefulWidget {
 
 class _SideBarState extends State<SideBar> {
   bool isExtended = false;
+  int appIdSelected = 0;
+
+  void extend() {
+    setState(() {
+      isExtended = !isExtended;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      width: isExtended ? 250 : 65,
+      width: isExtended ? 300 : 65,
       height: double.maxFinite,
 
       margin: const EdgeInsets.all(20),
@@ -33,7 +45,7 @@ class _SideBarState extends State<SideBar> {
         borderRadius: BorderRadius.circular(30),
 
         image: const DecorationImage(
-          image: AssetImage('assets/Images/Liquid-Bg-Green.jpg'),
+          image: AssetImage('images/Liquid-Bg-Green.jpg'),
           fit: BoxFit.fitHeight,
         ),
       ),
@@ -42,32 +54,34 @@ class _SideBarState extends State<SideBar> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          AnimatedCrossFade(
-            alignment: Alignment.center,
-            excludeBottomFocus: true,
+          ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); }),
 
-            firstChild: const IconButtonClose(),
-            firstCurve: Curves.easeOutExpo,
-            secondChild: const IconButtonOpen(),
-            secondCurve: Curves.easeOutExpo,
-
-            crossFadeState: isExtended ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-            duration: const Duration(milliseconds: 200),
-            reverseDuration: const Duration(milliseconds: 300),
+          Column(
+            children: [
+              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: "id 0",appId: 0, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: "id 1", appId: 1, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: "id 2", appId: 2, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: "id 3", appId: 3, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: "id 4", appId: 4, onPressedCallback: widget.onButtonSelection),
+            ],
           ),
 
-          _buildExtendButton()
+          ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); })
         ],
       ),
     );
   }
+}
 
 
+class ExtendButton extends StatelessWidget {
+  final bool isExtended;
+  final VoidCallback onPressedExtendedButton;
 
-  Widget _buildExtendButton(){
+  const ExtendButton({super.key, required this.isExtended, required this.onPressedExtendedButton});
 
-    IconData arrowRotate = isExtended ? Icons.arrow_back : Icons.arrow_forward;
-
+  @override
+  Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
       child: ElevatedButton(
@@ -78,65 +92,124 @@ class _SideBarState extends State<SideBar> {
             shape: MaterialStatePropertyAll(CircleBorder())
         ),
 
-        onPressed: () {
-          setState(() {
-            isExtended = !isExtended;
-          });
-        },
+        onPressed: onPressedExtendedButton,
 
-        child: Center(
-          child: Icon(arrowRotate, color: Colors.black),
-        ),
+        child: Icon(isExtended ? Icons.arrow_back : Icons.arrow_forward, color: Colors.black),
       ),
     );
   }
 }
 
 
+
+class AnimatedIconButton extends StatelessWidget {
+  final bool isExtended;
+
+  final IconData icon;
+  final Color color;
+  final String data;
+
+  final int appId;
+  final IntCallback onPressedCallback;
+
+  const AnimatedIconButton({super.key, required this.isExtended, required this.icon, required this.color, required this.data, required this.appId, required this.onPressedCallback});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedCrossFade(
+      alignment: Alignment.center,
+      excludeBottomFocus: true,
+
+      firstChild: IconButtonClose(
+        icon: icon,
+        color: color,
+        onPressed: () { onPressedCallback(appId); },
+      ),
+      firstCurve: Curves.easeOutExpo,
+      secondChild: IconButtonOpen(
+        icon: icon,
+        color: color,
+        data: data,
+        onPressed: () { onPressedCallback(appId); },
+      ),
+      secondCurve: Curves.easeOutExpo,
+
+      crossFadeState: isExtended ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+      duration: const Duration(milliseconds: 100),
+      reverseDuration: const Duration(milliseconds: 389),
+    );
+  }
+}
+
+
+
 class IconButtonClose extends StatelessWidget {
-  const IconButtonClose({super.key});
+  final IconData icon;
+  final Color color;
+
+  final VoidCallback onPressed;
+
+  const IconButtonClose({super.key, required this.icon, required this.color, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         height: 45,
         width: double.maxFinite,
+        margin: const EdgeInsets.symmetric(vertical: 5),
 
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(100)
         ),
 
-        child: const Center(child: Icon(Icons.search, color: Colors.black,)));
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+          child: Icon(icon, color: color)
+        )
+    );
   }
 }
 
 
+
 class IconButtonOpen extends StatelessWidget {
-  const IconButtonOpen({super.key});
+  final IconData icon;
+  final Color color;
+  final String data;
+
+  final VoidCallback onPressed;
+
+  const IconButtonOpen({super.key, required this.icon, required this.color, required this.data, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 45,
-      padding: EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       width: double.maxFinite,
 
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(100)
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(100),
       ),
 
-      child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(right: 5),
-                child: Icon(Icons.search, color: Colors.black,),
-              ),
-              Expanded(child:  SearchBar())
-            ],
+
+      child: ElevatedButton(
+        onPressed: onPressed,
+
+        child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Icon(icon, color: color),
+                ),
+                Expanded(child:  Text(data, style: TextStyle(color: color)))
+              ],
+        ),
       ),
     );
   }

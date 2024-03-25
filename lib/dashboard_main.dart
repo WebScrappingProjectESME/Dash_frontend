@@ -5,12 +5,29 @@ import 'package:flutter/material.dart';
 import 'package:main_project/Components/layout_component.dart';
 import 'package:main_project/Components/score_component.dart';
 import 'package:main_project/Components/sidebar_menu.dart';
+import 'package:main_project/components/info_component.dart';
+
+// type defs
+typedef IntCallback = void Function(int appId);
 
 
 
-class Dashboard extends StatelessWidget {
-
+class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+
+  int gameId = 0;
+
+  void updateId(int newId) {
+    setState(() {
+      gameId = newId;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +37,16 @@ class Dashboard extends StatelessWidget {
       child: Row(
         children: [
 
-          const SideBar(),
+          SideBar(onButtonSelection: (int newId) { updateId(newId); }),
 
           FlexColumn(
             childWidgets: [
 
               FlexRow(
                 childWidgets: [
-                  const ScoreComponent(gameId: 2),
+                  ScoreComponent(gameId: gameId),
 
-                  Expanded(
-                      flex: 3,
-                      child: LayoutComponent(Container())
-                  )
+                  const InfoComponent(),
                 ],
               ),
 

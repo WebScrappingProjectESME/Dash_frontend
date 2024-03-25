@@ -21,6 +21,7 @@ class ScoreComponent extends StatefulWidget {
 
 class _ScoreComponentState extends State<ScoreComponent> {
   double fetchedScore = 0;
+  String fetchedName = "";
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('data_files/Data.json');
@@ -44,6 +45,7 @@ class _ScoreComponentState extends State<ScoreComponent> {
         child: LayoutComponent(
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
             children: [
               const LayoutComponentHeader(),
 
