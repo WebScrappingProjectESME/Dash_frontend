@@ -11,9 +11,6 @@ import 'package:main_project/components/score_gauge.dart';
 class ScoreComponent extends StatefulWidget {
   final int gameId;
 
-
-  const ScoreComponent({super.key});
-
   const ScoreComponent({super.key, required this.gameId});
 
   @override
@@ -47,8 +44,6 @@ class _ScoreComponentState extends State<ScoreComponent> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
             children: [
-              const LayoutComponentHeader(), // Header
-
               LayoutComponentHeader(
                 icon: Icons.bubble_chart,
                 data: "Rating",
