@@ -59,7 +59,7 @@ class _DashboardState extends State<Dashboard> {
                     child: LayoutComponent(Container()),
                   ),
 
-                  const PriceComponent(), // History Widget
+                  PriceComponent(gameId: gameId), // History Widget
                 ],
               )
             ],

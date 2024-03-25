@@ -21,7 +21,7 @@ class LayoutHeaderPriceComponent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100)
                 ),
 
-                child: Center(
+                child: const Center(
                     child: Icon(
                         Icons.bar_chart,
                         color: Colors.greenAccent,

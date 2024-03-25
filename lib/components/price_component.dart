@@ -11,21 +11,23 @@ import 'package:main_project/components/layout_header_price_component.dart';
 import 'package:main_project/components/price_widget.dart';
 
 class PriceComponent extends StatefulWidget {
-  const PriceComponent({super.key});
+  final int gameId;
+
+  const PriceComponent({super.key, required this.gameId});
 
   @override
   State<PriceComponent> createState() => _PriceComponentState();
 }
 
 class _PriceComponentState extends State<PriceComponent> {
-  double fetchedPrice = 0;
+  String fetchedPrice = "";
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('data_files/Data.json');
     final data = await jsonDecode(response);
 
     setState(() {
-      fetchedPrice = data["games"][1]["score"];
+      fetchedPrice = data["games"][widget.gameId]["price"];
     });
   }
 
@@ -42,20 +44,20 @@ class _PriceComponentState extends State<PriceComponent> {
       child: LayoutComponent(
         Column(
           children: [
-            LayoutHeaderPriceComponent(), // Header
+            const LayoutHeaderPriceComponent(), // Header
 
             ListView(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               //padding: const EdgeInsets.all(5.0),
-              children: [
-                const PriceWidget(),
-                const PriceWidget(),
-                const PriceWidget(),
-                const PriceWidget(),
-                const PriceWidget(),
-                const PriceWidget(),
-                const PriceWidget()
+              children: const [
+                PriceWidget(),
+                PriceWidget(),
+                PriceWidget(),
+                PriceWidget(),
+                PriceWidget(),
+                PriceWidget(),
+                PriceWidget()
               ], // Empty initially
             )
           ],
