@@ -6,12 +6,29 @@ import 'package:main_project/Components/price_component.dart';
 import 'package:main_project/Components/layout_component.dart';
 import 'package:main_project/Components/score_component.dart';
 import 'package:main_project/Components/sidebar_menu.dart';
+import 'package:main_project/components/info_component.dart';
+
+// type defs
+typedef IntCallback = void Function(int appId);
 
 
 
-class Dashboard extends StatelessWidget {
-
+class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+
+  int gameId = 0;
+
+  void updateId(int newId) {
+    setState(() {
+      gameId = newId;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +38,16 @@ class Dashboard extends StatelessWidget {
       child: Row(
         children: [
 
-          const SideBar(),
+          SideBar(onButtonSelection: (int newId) { updateId(newId); }),
 
           FlexColumn( // Page Column
             childWidgets: [
 
               FlexRow( // First Row
                 childWidgets: [
-                  const ScoreComponent(), // Score Widget
+                  ScoreComponent(gameId: gameId),
 
-                  Expanded( // Title Widget
-                      flex: 3,
-                      child: LayoutComponent(Container())
-                  )
+                  InfoComponent(gameId: gameId),
                 ],
               ),
 
@@ -76,12 +90,12 @@ class FlexRow extends StatelessWidget {
   final List<Widget> childWidgets;
   final int flexSize;
 
-  const FlexRow({this.flexSize = 1,this.childWidgets = const [], super.key});
+  const FlexRow({this.flexSize = 1, this.childWidgets = const [], super.key});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: flexSize,
+        flex: flexSize,
         child: Row(
           children: childWidgets,
         )

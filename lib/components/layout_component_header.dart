@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 
 
 class LayoutComponentHeader extends StatelessWidget {
-  const LayoutComponentHeader({super.key});
+
+  final IconData icon;
+  final Color? iconColor;
+  final Color? iconColorBg;
+  final String data;
+
+  const LayoutComponentHeader({super.key, required this.icon, required this.iconColor, required this.iconColorBg, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +23,25 @@ class LayoutComponentHeader extends StatelessWidget {
             height: 40,
             width: 40,
             decoration: BoxDecoration(
-                color: const Color(0xff006200).withAlpha(80),
+                color: iconColorBg,
                 borderRadius: BorderRadius.circular(100)
             ),
 
             child: Center(
               child: Icon(
-                Icons.bubble_chart,
-                color: Colors.greenAccent[400],
+                icon,
+                color: iconColor,
                 size: 30
               )
             )
           ),
 
           // second child (title)
-          const Padding(
-            padding: EdgeInsets.only(left: 25),
+          Padding(
+            padding: const EdgeInsets.only(left: 25),
             child: Text(
-              "Rating",
-              style: TextStyle(
+              data,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 30,
               ),

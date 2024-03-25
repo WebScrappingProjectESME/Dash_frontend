@@ -1,61 +1,216 @@
 // lib
 import 'package:flutter/material.dart';
-import 'package:sidebarx/sidebarx.dart';
-
-import 'package:main_project/header_search_bar.dart';
 
 // pages
 
+// types def
+typedef IntCallback = void Function(int appId);
 
 
-class SideBar extends StatelessWidget {
-  const SideBar({super.key});
+
+class SideBar extends StatefulWidget {
+  final IntCallback onButtonSelection;
+
+  const SideBar({super.key, required this.onButtonSelection});
+
+  @override
+  State<SideBar> createState() => _SideBarState();
+}
+
+
+class _SideBarState extends State<SideBar> {
+  bool isExtended = false;
+  int appIdSelected = 0;
+
+  void extend() {
+    setState(() {
+      isExtended = !isExtended;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SidebarX(
-      controller: SidebarXController(selectedIndex: 0),
-      footerDivider: const Divider(),
+    return AnimatedContainer(
+      width: isExtended ? 300 : 65,
+      height: double.maxFinite,
 
-      theme: SidebarXTheme(
-          margin: const EdgeInsets.all(20),
-          width: 80,
+      margin: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
 
-          textStyle: const TextStyle(
-            color: Colors.white,
-            fontSize: 25
-          ),
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeOut,
 
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            image: const DecorationImage(
-              image: AssetImage('assets/Images/Liquid-Bg-Green.jpg'),
-              fit: BoxFit.fitHeight,
-            ),
-          ),
 
-          hoverColor: Colors.black,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
 
-          iconTheme: const IconThemeData(
-            color: Colors.white,
-          )
-      ),
-
-      extendedTheme: const SidebarXTheme(
-        width: 300,
-        margin: EdgeInsets.all(20),
-      ),
-
-      items: [
-        const SidebarXItem(
-          icon: Icons.search,
-          label: "elden ring",
+        image: const DecorationImage(
+          image: AssetImage('images/Liquid-Bg-Green.jpg'),
+          fit: BoxFit.fitHeight,
         ),
-        SidebarXItem(
-          iconWidget: HeaderSearchBar(),
-          label: "elden ring",
+      ),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+
+          ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); }),
+
+          Column(
+            children: [
+              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: "id 0",appId: 0, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: "id 1", appId: 1, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: "id 2", appId: 2, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: "id 3", appId: 3, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: "id 4", appId: 4, onPressedCallback: widget.onButtonSelection),
+            ],
+          ),
+
+          ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); })
+        ],
+      ),
+    );
+  }
+}
+
+
+class ExtendButton extends StatelessWidget {
+  final bool isExtended;
+  final VoidCallback onPressedExtendedButton;
+
+  const ExtendButton({super.key, required this.isExtended, required this.onPressedExtendedButton});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: ElevatedButton(
+        style: const ButtonStyle(
+            fixedSize: MaterialStatePropertyAll(Size.square(45)),
+            padding: MaterialStatePropertyAll(EdgeInsets.zero),
+            backgroundColor: MaterialStatePropertyAll(Colors.white),
+            shape: MaterialStatePropertyAll(CircleBorder())
+        ),
+
+        onPressed: onPressedExtendedButton,
+
+        child: Icon(isExtended ? Icons.arrow_back : Icons.arrow_forward, color: Colors.black),
+      ),
+    );
+  }
+}
+
+
+
+class AnimatedIconButton extends StatelessWidget {
+  final bool isExtended;
+
+  final IconData icon;
+  final Color color;
+  final String data;
+
+  final int appId;
+  final IntCallback onPressedCallback;
+
+  const AnimatedIconButton({super.key, required this.isExtended, required this.icon, required this.color, required this.data, required this.appId, required this.onPressedCallback});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedCrossFade(
+      alignment: Alignment.center,
+      excludeBottomFocus: true,
+
+      firstChild: IconButtonClose(
+        icon: icon,
+        color: color,
+        onPressed: () { onPressedCallback(appId); },
+      ),
+      firstCurve: Curves.easeOutExpo,
+      secondChild: IconButtonOpen(
+        icon: icon,
+        color: color,
+        data: data,
+        onPressed: () { onPressedCallback(appId); },
+      ),
+      secondCurve: Curves.easeOutExpo,
+
+      crossFadeState: isExtended ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+      duration: const Duration(milliseconds: 100),
+      reverseDuration: const Duration(milliseconds: 389),
+    );
+  }
+}
+
+
+
+class IconButtonClose extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+
+  final VoidCallback onPressed;
+
+  const IconButtonClose({super.key, required this.icon, required this.color, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 45,
+        width: double.maxFinite,
+        margin: const EdgeInsets.symmetric(vertical: 5),
+
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(100)
+        ),
+
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+          child: Icon(icon, color: color)
         )
-      ],
+    );
+  }
+}
+
+
+
+class IconButtonOpen extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final String data;
+
+  final VoidCallback onPressed;
+
+  const IconButtonOpen({super.key, required this.icon, required this.color, required this.data, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 45,
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      width: double.maxFinite,
+
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(100),
+      ),
+
+
+      child: ElevatedButton(
+        onPressed: onPressed,
+
+        child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Icon(icon, color: color),
+                ),
+                Expanded(child:  Text(data, style: TextStyle(color: color)))
+              ],
+        ),
+      ),
     );
   }
 }

@@ -9,8 +9,12 @@ import 'package:main_project/components/layout_component_header.dart';
 import 'package:main_project/components/score_gauge.dart';
 
 class ScoreComponent extends StatefulWidget {
+  final int gameId;
+
 
   const ScoreComponent({super.key});
+
+  const ScoreComponent({super.key, required this.gameId});
 
   @override
   State<ScoreComponent> createState() => _ScoreComponentState();
@@ -24,7 +28,7 @@ class _ScoreComponentState extends State<ScoreComponent> {
     final data = await jsonDecode(response);
 
     setState(() {
-      fetchedScore = data["games"][1]["score"];
+      fetchedScore = data["games"][widget.gameId]["score"];
     });
   }
 
@@ -41,8 +45,16 @@ class _ScoreComponentState extends State<ScoreComponent> {
         child: LayoutComponent(
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
             children: [
               const LayoutComponentHeader(), // Header
+
+              LayoutComponentHeader(
+                icon: Icons.bubble_chart,
+                data: "Rating",
+                iconColor: Colors.greenAccent[400],
+                iconColorBg: const Color(0xff006200).withAlpha(80),
+              ),
 
               ScoreGauge(value: fetchedScore), // Score
             ],
