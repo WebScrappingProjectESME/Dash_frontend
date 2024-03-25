@@ -67,6 +67,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/Liquid-Bg-Green.jpg
+    - assets/images/header.jpg
+    - assets/images/header_elden.jpg
     - assets/data_files/
 
   # An image asset can refer to one or more resolution-specific "variants", see

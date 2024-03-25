@@ -30,14 +30,10 @@ class _ScoreComponentState extends State<ScoreComponent> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    readJson();
-  }
-
-  @override
   Widget build(BuildContext context) {
+
     readJson();
+
     return Expanded(
         child: LayoutComponent(
           Column(

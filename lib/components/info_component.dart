@@ -1,4 +1,6 @@
 // libs
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -19,7 +21,8 @@ class InfoComponent extends StatefulWidget {
 }
 
 class _InfoComponentState extends State<InfoComponent> {
-  String fetchedName = "";
+  late String fetchedName;
+  late Image fetchedImage;
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('data_files/Data.json');
@@ -27,17 +30,17 @@ class _InfoComponentState extends State<InfoComponent> {
 
     setState(() {
       fetchedName = data["games"][widget.gameId]["name"];
+
+      String url = data["games"][widget.gameId]["thumbnail_URL"];
+      fetchedImage = Image.network(url);
     });
   }
 
   @override
-  void initState() {
-    super.initState();
-    readJson();
-  }
-
-  @override
   Widget build(BuildContext context) {
+
+    readJson();
+
     return Expanded(
         flex: 3,
         child: LayoutComponent(
@@ -59,20 +62,32 @@ class _InfoComponentState extends State<InfoComponent> {
                     Container(
                       height: double.maxFinite,
                       width: 300,
-                      color: Colors.white,
-                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
+                      margin: const EdgeInsets.only(top: 25),
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+
+                        image: DecorationImage(
+                          image: fetchedImage.image,
+                          fit: BoxFit.fitHeight
+                        ),
+                      ),
                     ),
 
-                    Column(
-                      children: [
-                        Text(
-                          fetchedName,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 40
-                          ),
-                        )
-                      ],
+                    Container(
+                      margin: const EdgeInsets.only(top: 25,left: 25),
+
+                      child: Column(
+                        children: [
+                          Text(
+                            fetchedName,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 40
+                            ),
+                          )
+                        ],
+                      ),
                     )
 
                   ],
