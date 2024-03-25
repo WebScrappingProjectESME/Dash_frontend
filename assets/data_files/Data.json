@@ -3,27 +3,32 @@
     {
       "name": "Elden Ring",
       "score": 91.96,
-      "price": "39,99€"
+      "price": "39,99€",
+      "thumbnail_URL": "https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg?t=1710261394"
     },
     {
       "name": "Dota 2",
       "score": 81.56,
-      "price": "11,99€"
+      "price": "11,99€",
+      "thumbnail_URL": "https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1710346933"
     },
     {
       "name": "Cities: Skylines II",
       "score": 56.31,
-      "price": "55,00€"
+      "price": "55,00€",
+      "thumbnail_URL": "https://cdn.akamai.steamstatic.com/steam/apps/949230/header_alt_assets_0_french.jpg?t=1711388424"
     },
     {
       "name": "Minecraft Dungeons",
       "score": 88.87,
-      "price": "29,99€"
+      "price": "29,99€",
+      "thumbnail_URL": "https://cdn.akamai.steamstatic.com/steam/apps/1672970/header.jpg?t=1697014975"
     },
     {
-      "name": "Dark Souls 2",
+      "name": "Destiny 2",
       "score": 10,
-      "price": "49,99€"
+      "price": "49,99€",
+      "thumbnail_URL": "https://cdn2.steamgriddb.com/icon/e3c9cb08585a40829bc88130b0b8ebdf/32/256x256.png"
     }
   ]
 }
