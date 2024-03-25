@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 
 class LayoutComponent extends StatelessWidget {
-  Widget childWidget;
+  final Widget childWidget;
 
-  LayoutComponent(this.childWidget, {super.key});
+  const LayoutComponent(this.childWidget, {super.key});
 
   @override
   Widget build(BuildContext context) {
