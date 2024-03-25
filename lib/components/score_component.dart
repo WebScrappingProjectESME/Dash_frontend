@@ -8,10 +8,11 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 import 'package:main_project/components/score_gauge.dart';
 
-
-
 class ScoreComponent extends StatefulWidget {
   final int gameId;
+
+
+  const ScoreComponent({super.key});
 
   const ScoreComponent({super.key, required this.gameId});
 
@@ -46,6 +47,8 @@ class _ScoreComponentState extends State<ScoreComponent> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
             children: [
+              const LayoutComponentHeader(), // Header
+
               LayoutComponentHeader(
                 icon: Icons.bubble_chart,
                 data: "Rating",
@@ -53,7 +56,7 @@ class _ScoreComponentState extends State<ScoreComponent> {
                 iconColorBg: const Color(0xff006200).withAlpha(80),
               ),
 
-              ScoreGauge(value: fetchedScore),
+              ScoreGauge(value: fetchedScore), // Score
             ],
           ),
         )

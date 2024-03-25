@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Dart pages files
+import 'package:main_project/Components/price_component.dart';
 import 'package:main_project/Components/layout_component.dart';
 import 'package:main_project/Components/score_component.dart';
 import 'package:main_project/Components/sidebar_menu.dart';
@@ -39,10 +40,10 @@ class _DashboardState extends State<Dashboard> {
 
           SideBar(onButtonSelection: (int newId) { updateId(newId); }),
 
-          FlexColumn(
+          FlexColumn( // Page Column
             childWidgets: [
 
-              FlexRow(
+              FlexRow( // First Row
                 childWidgets: [
                   ScoreComponent(gameId: gameId),
 
@@ -50,17 +51,15 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
 
-              FlexRow(
+              FlexRow( // Second Row
                 flexSize: 2,
                 childWidgets: [
-                  Expanded(
+                  Expanded( // Population Widget
                     flex: 2,
                     child: LayoutComponent(Container()),
                   ),
 
-                  Expanded(
-                    child: LayoutComponent(Container()),
-                  )
+                  const PriceComponent(), // History Widget
                 ],
               )
             ],
@@ -103,13 +102,3 @@ class FlexRow extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
