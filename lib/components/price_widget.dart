@@ -40,7 +40,7 @@ class _PriceWidgetState extends State<PriceWidget> {
       margin: const EdgeInsets.symmetric(vertical: 3),
       child : Stack(
         children: [
-          Container(
+          Container( // Box
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10.0),
             height: 48.0,
@@ -52,18 +52,32 @@ class _PriceWidgetState extends State<PriceWidget> {
             child: const Text('11th. June', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
           ),
 
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10.0),
+          Container( // Price text
+            margin: const EdgeInsets.symmetric(vertical : 8, horizontal: 10),
             alignment: Alignment.center,
             //padding: const EdgeInsets.all(30.0),
-            height: 46.0,
-            width: 46.0,
+            height: 32.0,
+            width: 58.0,
             decoration: BoxDecoration(
-                color: const Color(0xff006200).withAlpha(0),
+                color: const Color(0xff006200).withAlpha(600),
                 border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                 borderRadius: BorderRadius.circular(50)),
 
-            child: const Text('39€', style: TextStyle(color: const Color(0xff00E676), fontWeight: FontWeight.bold)),
+            child: const Text('39€', style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
+          ),
+
+          Container( // Reduc text
+            margin: const EdgeInsets.symmetric(vertical : 8, horizontal: 75),
+            alignment: Alignment.center,
+            //padding: const EdgeInsets.all(30.0),
+            height: 32.0,
+            width: 58.0,
+            decoration: BoxDecoration(
+                color: const Color(0xff006200).withAlpha(600),
+                border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
+                borderRadius: BorderRadius.circular(50)),
+
+            child: const Text('30%', style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
           ),
         ],
       ),
