@@ -40,7 +40,12 @@ class _LineChartComponentState extends State<LineChartComponent> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const LayoutComponentHeader(),
+              LayoutComponentHeader(
+                icon: Icons.bubble_chart,
+                data: "Rating",
+                iconColor: Colors.greenAccent[400],
+                iconColorBg: const Color(0xff006200).withAlpha(80),
+              ),
 
               LineChartSample2(),
             ],
