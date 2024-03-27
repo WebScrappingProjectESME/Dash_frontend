@@ -71,6 +71,24 @@ class _PriceWidgetState extends State<PriceWidget> {
                                    ),
                  ),
 
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal : 4.0),
+                  child: Container( // Reduc text
+                    //margin: const EdgeInsets.symmetric(vertical : 8, horizontal: 75),
+                    alignment: Alignment.center,
+                    //padding: const EdgeInsets.all(30.0),
+                    height: 32.0,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        color: const Color(0xff003c62).withAlpha(0),
+                        border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
+                        borderRadius: BorderRadius.circular(50)),
+
+                    child: const Text('11th. June', style: TextStyle(color: Color(
+                        0xffffffff), fontWeight: FontWeight.bold)),
+                  ),
+                ),
+
                  Padding(
                    padding: const EdgeInsets.symmetric(horizontal : 4.0),
                    child: Container( // Reduc text
@@ -87,11 +105,6 @@ class _PriceWidgetState extends State<PriceWidget> {
                     child: const Text('30%', style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
                                    ),
                  ),
-
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal : 4.0),
-                  child: Text('11th. June', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
-                )
               ],
             ),
           ),
