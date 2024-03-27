@@ -11,8 +11,7 @@ class LayoutComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.all(30),
 
       decoration: BoxDecoration(
         color: const Color(0xff060202),

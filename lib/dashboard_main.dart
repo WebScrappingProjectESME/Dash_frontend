@@ -1,11 +1,11 @@
 // Lib
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 // Dart pages files
 import 'package:main_project/Components/price_component.dart';
-import 'package:main_project/Components/layout_component.dart';
-import 'package:main_project/Components/score_component.dart';
 import 'package:main_project/Components/sidebar_menu.dart';
+import 'package:main_project/components/gallery_component.dart';
 import 'package:main_project/components/info_component.dart';
 import 'package:main_project/components/line_chart_component.dart';
 
@@ -37,67 +37,59 @@ class _DashboardState extends State<Dashboard> {
     return Material(
       color: const Color(0xff171717),
 
-      child: Row(
-        children: [
+      child: Container(
+        padding: const EdgeInsets.all(15),
 
-          SideBar(onButtonSelection: (int newId) { updateId(newId); }),
-
-          FlexColumn( // Page Column
-            childWidgets: [
-
-              FlexRow( // First Row
-                childWidgets: [
-                  ScoreComponent(gameId: gameId),
-
-                  InfoComponent(gameId: gameId),
-                ],
-              ),
-
-              FlexRow( // Second Row
-                flexSize: 2,
-                childWidgets: [
-                  const LineChartComponent(),
-
-                  PriceComponent(gameId: gameId), // History Widget
-                ],
-              )
-            ],
-          )
-        ],
+        child: _buildLayout()
       ),
     );
   }
-}
 
+  Widget _buildLayout() {
+    return LayoutGrid(
+        areas: '''nav general''',
 
-class FlexColumn extends StatelessWidget {
-  final List<Widget> childWidgets;
+        columnSizes: [auto,1.fr],
+        rowSizes: const [auto],
 
-  const FlexColumn({this.childWidgets = const [], super.key});
+        columnGap: 25,
+        gridFit: GridFit.expand,
 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: Column(
-          children: childWidgets
-        )
+        children: [
+
+          SideBar(onButtonSelection: (int newId) { updateId(newId); }).inGridArea("nav"),
+
+          LayoutGrid(
+
+            areas:
+            '''
+                image      general    general
+                image      general    general
+                population population reduction
+                population population reduction
+                population population reduction
+                ''',
+
+            columnSizes: [1.fr, 1.fr, 1.fr],
+            rowSizes: [1.fr, 1.fr, 1.fr, 1.fr, 1.fr],
+
+            columnGap: 25,
+            rowGap: 25,
+            gridFit: GridFit.expand,
+
+            children: [
+              GalleryComponent(gameId: gameId).inGridArea("image"),
+
+              InfoComponent(gameId: gameId).inGridArea("general"),
+
+              const LineChartComponent().inGridArea("population"),
+
+              PriceComponent(gameId: gameId).inGridArea("reduction"), // History Widget
+            ],
+          ),
+        ]
     );
   }
 }
 
-class FlexRow extends StatelessWidget {
-  final List<Widget> childWidgets;
-  final int flexSize;
 
-  const FlexRow({this.flexSize = 1, this.childWidgets = const [], super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        flex: flexSize,
-        child: Row(
-          children: childWidgets,
-        )
-    );
-  }
-}

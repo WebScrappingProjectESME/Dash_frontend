@@ -41,32 +41,27 @@ class _PriceComponentState extends State<PriceComponent> {
   @override
   Widget build(BuildContext context) {
     //readJson();
-    return Expanded(
-      child: LayoutComponent(
-        Column(
-          children: [
-            LayoutComponentHeader(
-              icon: Icons.bar_chart,
-              data: "Prices",
-              iconColor: Colors.greenAccent[400],
-              iconColorBg: const Color(0xff006200).withAlpha(80),
-            ), // Header
+    return LayoutComponent(
+      Column(
+        children: [
+          const LayoutHeaderPriceComponent(), // Header
 
-            ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              //padding: const EdgeInsets.all(5.0),
-              children: const [
-                PriceWidget(),
-                PriceWidget(),
-                PriceWidget(),
-                PriceWidget(),
-                PriceWidget()
-              ], // Empty initially
-            )
-          ],
-        ),
-      )
+          ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            //padding: const EdgeInsets.all(5.0),
+            children: const [
+              PriceWidget(),
+              PriceWidget(),
+              PriceWidget(),
+              PriceWidget(),
+              PriceWidget(),
+              PriceWidget(),
+              PriceWidget()
+            ], // Empty initially
+          )
+        ],
+      ),
     );
   }
 }

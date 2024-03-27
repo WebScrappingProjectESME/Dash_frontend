@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 
 class LayoutComponentHeader extends StatelessWidget {
@@ -13,43 +14,43 @@ class LayoutComponentHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Row(
-        children: [
+    return LayoutGrid(
 
-          // first child (ICON)
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: iconColorBg,
-                borderRadius: BorderRadius.circular(100)
-            ),
+      areas: '''icon title''',
 
-            child: Center(
-              child: Icon(
-                icon,
-                color: iconColor,
-                size: 30
-              )
-            )
+      columnSizes: [auto, 1.fr],
+      rowSizes: const [auto],
+
+      columnGap: 25,
+
+      children: [
+
+        Container(
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(
+              color: iconColorBg,
+              borderRadius: BorderRadius.circular(100)
           ),
 
-          // second child (title)
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Text(
-              data,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-              ),
+          child: Center(
+            child: Icon(
+              icon,
+              color: iconColor,
+              size: 30
             )
           )
+        ),
 
-        ],
-      )
+        Text(
+          data,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+          ),
+        )
+
+      ],
     );
   }
 }
