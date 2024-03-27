@@ -7,6 +7,8 @@ import 'package:main_project/Components/layout_component.dart';
 import 'package:main_project/Components/score_component.dart';
 import 'package:main_project/Components/sidebar_menu.dart';
 import 'package:main_project/components/info_component.dart';
+import 'package:main_project/components/line_chart_component.dart';
+
 
 // type defs
 typedef IntCallback = void Function(int appId);
@@ -54,10 +56,7 @@ class _DashboardState extends State<Dashboard> {
               FlexRow( // Second Row
                 flexSize: 2,
                 childWidgets: [
-                  Expanded( // Population Widget
-                    flex: 2,
-                    child: LayoutComponent(Container()),
-                  ),
+                  LineChartComponent(),
 
                   PriceComponent(gameId: gameId), // History Widget
                 ],

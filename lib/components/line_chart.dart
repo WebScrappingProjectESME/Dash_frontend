@@ -10,8 +10,8 @@ class LineChartSample2 extends StatefulWidget {
 
 class _LineChartSample2State extends State<LineChartSample2> {
   List<Color> gradientColors = [
-    const Color(0xFF50E4FF),
-    const Color(0xFF2196F3),
+    const Color(0xff00E676),
+    const Color(0xff006200),
   ];
 
   bool showAvg = false;
@@ -21,7 +21,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1.70,
+          aspectRatio: 1.85,
           child: Padding(
             padding: const EdgeInsets.only(
               right: 18,
