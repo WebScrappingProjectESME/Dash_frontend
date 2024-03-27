@@ -36,7 +36,7 @@ class _LineChartComponentState extends State<LineChartComponent> {
   Widget build(BuildContext context) {
     readJson();
     return Expanded(
-      flex: 2,
+      flex: 3,
         child: LayoutComponent(
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
