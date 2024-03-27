@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:main_project/components/layout_component_header.dart';
 
 class LayoutHeaderPriceComponent extends StatelessWidget {
   const LayoutHeaderPriceComponent({super.key});
@@ -21,10 +21,10 @@ class LayoutHeaderPriceComponent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100)
                 ),
 
-                child: const Center(
+                child: Center(
                     child: Icon(
                         Icons.bar_chart,
-                        color: Colors.greenAccent,
+                        color: Colors.greenAccent[400],
                         size: 30
                     )
                 )

@@ -63,7 +63,7 @@ class _PriceWidgetState extends State<PriceWidget> {
                 border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                 borderRadius: BorderRadius.circular(50)),
 
-            child: const Text('39€', style: TextStyle(color: Colors.greenAccent, fontWeight: FontWeight.bold)),
+            child: const Text('39€', style: TextStyle(color: const Color(0xff00E676), fontWeight: FontWeight.bold)),
           ),
         ],
       ),

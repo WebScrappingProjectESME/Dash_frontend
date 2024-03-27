@@ -51,8 +51,8 @@ class _InfoComponentState extends State<InfoComponent> {
               LayoutComponentHeader(
                 icon: Icons.home_filled,
                 data: "General Infos",
-                iconColor: Colors.lightBlueAccent,
-                iconColorBg: const Color(0xff0080ff).withAlpha(70),
+                iconColor: Colors.greenAccent[400],
+                iconColorBg: const Color(0xff006200).withAlpha(80),
               ),
 
               Expanded(
