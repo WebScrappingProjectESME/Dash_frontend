@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_header_price_component.dart';
 import 'package:main_project/components/price_widget.dart';
+import 'package:main_project/components/layout_component_header.dart';
 
 class PriceComponent extends StatefulWidget {
   final int gameId;
@@ -44,15 +45,18 @@ class _PriceComponentState extends State<PriceComponent> {
       child: LayoutComponent(
         Column(
           children: [
-            const LayoutHeaderPriceComponent(), // Header
+            LayoutComponentHeader(
+              icon: Icons.bar_chart,
+              data: "Prices",
+              iconColor: Colors.greenAccent[400],
+              iconColorBg: const Color(0xff006200).withAlpha(80),
+            ), // Header
 
             ListView(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               //padding: const EdgeInsets.all(5.0),
               children: const [
-                PriceWidget(),
-                PriceWidget(),
                 PriceWidget(),
                 PriceWidget(),
                 PriceWidget(),

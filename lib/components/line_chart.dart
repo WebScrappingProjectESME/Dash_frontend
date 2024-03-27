@@ -21,7 +21,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1.85,
+          aspectRatio: 2.5,
           child: Padding(
             padding: const EdgeInsets.only(
               right: 18,
@@ -156,21 +156,28 @@ class _LineChartSample2State extends State<LineChartSample2> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: 11,
+      maxX: 12,
       minY: 0,
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
           spots: const [
             FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(9.5, 3),
+            FlSpot(1.3, 2),
+            FlSpot(2.6, 5),
+            FlSpot(3.5, 3.1),
+            FlSpot(4.9, 4),
+            FlSpot(5.4, 3),
+            FlSpot(6.8, 4),
+            FlSpot(7.2, 3),
+            FlSpot(8, 2),
+            FlSpot(9.1, 5),
+            FlSpot(9.5, 3.1),
             FlSpot(11, 4),
+            FlSpot(11.6, 3),
+            FlSpot(12, 4),
           ],
-          isCurved: false,
+          isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,
           ),
