@@ -21,7 +21,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 2.5,
+          aspectRatio: 2.8,
           child: Padding(
             padding: const EdgeInsets.only(
               right: 18,
@@ -31,6 +31,24 @@ class _LineChartSample2State extends State<LineChartSample2> {
             ),
             child: LineChart(
               showAvg ? avgData() : mainData(),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 60,
+          height: 34,
+          child: TextButton(
+            onPressed: () {
+              setState(() {
+                showAvg = !showAvg;
+              });
+            },
+            child: Text(
+              'avg',
+              style: TextStyle(
+                fontSize: 12,
+                color: showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+              ),
             ),
           ),
         ),

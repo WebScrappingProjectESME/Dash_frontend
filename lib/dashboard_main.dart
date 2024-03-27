@@ -56,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
               FlexRow( // Second Row
                 flexSize: 2,
                 childWidgets: [
-                  LineChartComponent(),
+                  const LineChartComponent(),
 
                   PriceComponent(gameId: gameId), // History Widget
                 ],
