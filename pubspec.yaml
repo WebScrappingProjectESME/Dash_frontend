@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   gauge_indicator: ^0.4.3
   fl_chart: ^0.66.2
+  flutter_layout_grid: ^2.0.0
 
 
 dev_dependencies:
@@ -68,8 +69,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/Liquid-Bg-Green.jpg
-    - assets/images/header.jpg
-    - assets/images/header_elden.jpg
+    - assets/images/5596.jpg
     - assets/data_files/
 
   # An image asset can refer to one or more resolution-specific "variants", see

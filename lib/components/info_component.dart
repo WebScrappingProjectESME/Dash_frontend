@@ -1,6 +1,4 @@
 // libs
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -8,6 +6,7 @@ import 'dart:convert';
 // pages
 import 'layout_component.dart';
 import 'layout_component_header.dart';
+import 'score_gauge.dart';
 
 
 
@@ -21,18 +20,14 @@ class InfoComponent extends StatefulWidget {
 }
 
 class _InfoComponentState extends State<InfoComponent> {
-  late String fetchedName;
-  late Image fetchedImage;
+  double fetchedScore = 0;
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('data_files/Data.json');
     final data = await jsonDecode(response);
 
     setState(() {
-      fetchedName = data["games"][widget.gameId]["name"];
-
-      String url = data["games"][widget.gameId]["thumbnail_URL"];
-      fetchedImage = Image.network(url);
+      fetchedScore = data["games"][widget.gameId]["score"];
     });
   }
 
@@ -41,61 +36,33 @@ class _InfoComponentState extends State<InfoComponent> {
 
     readJson();
 
-    return Expanded(
-        flex: 3,
-        child: LayoutComponent(
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return LayoutComponent(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
+        children: [
+          LayoutComponentHeader(
+            icon: Icons.home_filled,
+            data: "General Infos",
+            iconColor: Colors.lightBlueAccent,
+            iconColorBg: const Color(0xff0080ff).withAlpha(70),
+          ),
+
+          const Row(
             children: [
-              LayoutComponentHeader(
-                icon: Icons.home_filled,
-                data: "General Infos",
-                iconColor: Colors.greenAccent[400],
-                iconColorBg: const Color(0xff006200).withAlpha(80),
-              ),
 
-              Expanded(
-                child: Row(
-                  children: [
+              // SizedBox(
+              //   height: double.maxFinite,
+              //   width: 300,
+              //   //margin: const EdgeInsets.only(top: 25),
+              //
+              //   child: ScoreGauge(value: fetchedScore),
+              // ),
 
-                    Container(
-                      height: double.maxFinite,
-                      width: 300,
-                      margin: const EdgeInsets.only(top: 25),
-
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-
-                        image: DecorationImage(
-                          image: fetchedImage.image,
-                          fit: BoxFit.fitHeight
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      margin: const EdgeInsets.only(top: 25,left: 25),
-
-                      child: Column(
-                        children: [
-                          Text(
-                            fetchedName,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 40
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-
-                  ],
-                )
-              )
             ],
           )
-        )
+        ],
+      )
     );
   }
 }
