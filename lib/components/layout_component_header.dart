@@ -9,8 +9,9 @@ class LayoutComponentHeader extends StatelessWidget {
   final Color? iconColor;
   final Color? iconColorBg;
   final String data;
+  final FontWeight fontWeight;
 
-  const LayoutComponentHeader({super.key, required this.icon, required this.iconColor, required this.iconColorBg, required this.data});
+  const LayoutComponentHeader({super.key, required this.icon, required this.iconColor, required this.iconColorBg, required this.data,this.fontWeight = FontWeight.normal});
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +44,11 @@ class LayoutComponentHeader extends StatelessWidget {
         ),
 
         Text(
-          data,
-          style: const TextStyle(
+          data.toUpperCase(),
+          style: TextStyle(
             color: Colors.white,
             fontSize: 30,
+            fontWeight: fontWeight
           ),
         )
 

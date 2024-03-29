@@ -42,12 +42,13 @@ class _InfoComponentState extends State<InfoComponent> {
       LayoutGrid(
         areas:
         '''
-        header header header
-        score  .      .
+        header header header header
+        score  pop    dlc    heures
+        score  prix   tags   tags
         ''',
 
-        columnSizes: [auto, 1.fr, 1.fr],
-        rowSizes: [auto, 1.fr],
+        columnSizes: [auto, 1.fr, 1.fr, 1.fr],
+        rowSizes: [auto, 1.fr, 1.fr],
 
         columnGap: 25,
         rowGap: 25,
@@ -56,17 +57,62 @@ class _InfoComponentState extends State<InfoComponent> {
         children: [
           LayoutComponentHeader(
             icon: Icons.home_filled,
-            data: "General Infos",
             iconColor: Colors.lightBlueAccent,
             iconColorBg: const Color(0xff0080ff).withAlpha(70),
+            data: "General Infos",
           ).inGridArea("header"),
 
-          SizedBox(
+          Container(
             height: double.maxFinite,
-            width: 250,
+            constraints: const BoxConstraints(minWidth: 250, maxWidth: 250),
 
             child: ScoreGauge(value: fetchedScore),
           ).inGridArea("score"),
+
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25)
+            ),
+            color: const Color(0xff171717),
+
+            child: const Center(child: Text("population",style: TextStyle(color: Colors.white),)),
+          ).inGridArea("pop"),
+
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)
+            ),
+            color: const Color(0xff171717),
+
+            child: const Center(child: Text("dlc",style: TextStyle(color: Colors.white),)),
+          ).inGridArea("dlc"),
+
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)
+            ),
+            color: const Color(0xff171717),
+
+            child: const Center(child: Text("heures",style: TextStyle(color: Colors.white),)),
+          ).inGridArea("heures"),
+
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)
+            ),
+            color: const Color(0xff171717),
+
+            child: const Center(child: Text("prix",style: TextStyle(color: Colors.white),)),
+          ).inGridArea("prix"),
+
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25)
+            ),
+            color: const Color(0xff171717),
+
+            child: const Center(child: Text("tags",style: TextStyle(color: Colors.white),)),
+          ).inGridArea("tags"),
         ],
       )
     );

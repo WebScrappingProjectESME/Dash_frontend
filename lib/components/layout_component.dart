@@ -14,7 +14,7 @@ class LayoutComponent extends StatelessWidget {
       color: const Color(0xff060202),
 
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(50),
       ),
 
       child: Padding(
