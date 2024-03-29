@@ -63,12 +63,12 @@ class _DashboardState extends State<Dashboard> {
 
             areas:
             '''
-                image      general    general
-                image      general    general
-                population population reduction
-                population population reduction
-                population population reduction
-                ''',
+            image      general    general
+            image      general    general
+            population population reduction
+            population population reduction
+            population population reduction
+            ''',
 
             columnSizes: [1.fr, 1.fr, 1.fr],
             rowSizes: [1.fr, 1.fr, 1.fr, 1.fr, 1.fr],
