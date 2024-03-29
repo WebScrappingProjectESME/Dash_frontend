@@ -10,15 +10,17 @@ class LayoutComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(30),
+    return Card(
+      color: const Color(0xff060202),
 
-      decoration: BoxDecoration(
-        color: const Color(0xff060202),
-        borderRadius: BorderRadius.circular(50),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
       ),
 
-      child: childWidget,
+      child: Padding(
+        padding: const EdgeInsets.all(25),
+        child: childWidget,
+      ),
     );
   }
 }
