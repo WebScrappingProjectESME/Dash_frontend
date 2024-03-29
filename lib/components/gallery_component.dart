@@ -58,7 +58,8 @@ class _GalleryComponentState extends State<GalleryComponent> {
               icon: Icons.bubble_chart,
               iconColor: Colors.greenAccent[400],
               iconColorBg: const Color(0xff006200).withAlpha(80),
-              data: fetchedName
+              data: fetchedName,
+              fontWeight: FontWeight.bold,
             ).inGridArea('header'),
 
             ClipRRect(
