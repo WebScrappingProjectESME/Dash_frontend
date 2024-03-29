@@ -1,6 +1,8 @@
 // libs
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'dart:convert';
 
 // pages
@@ -37,8 +39,19 @@ class _InfoComponentState extends State<InfoComponent> {
     readJson();
 
     return LayoutComponent(
-      Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      LayoutGrid(
+        areas:
+        '''
+        header header header
+        score  .      .
+        ''',
+
+        columnSizes: [auto, 1.fr, 1.fr],
+        rowSizes: [auto, 1.fr],
+
+        columnGap: 25,
+        rowGap: 25,
+        gridFit: GridFit.expand,
 
         children: [
           LayoutComponentHeader(
@@ -46,23 +59,21 @@ class _InfoComponentState extends State<InfoComponent> {
             data: "General Infos",
             iconColor: Colors.lightBlueAccent,
             iconColorBg: const Color(0xff0080ff).withAlpha(70),
-          ),
+          ).inGridArea("header"),
 
-          const Row(
-            children: [
+          SizedBox(
+            height: double.maxFinite,
+            width: 250,
 
-              // SizedBox(
-              //   height: double.maxFinite,
-              //   width: 300,
-              //   //margin: const EdgeInsets.only(top: 25),
-              //
-              //   child: ScoreGauge(value: fetchedScore),
-              // ),
-
-            ],
-          )
+            child: ScoreGauge(value: fetchedScore),
+          ).inGridArea("score"),
         ],
       )
     );
   }
 }
+
+
+
+
+
