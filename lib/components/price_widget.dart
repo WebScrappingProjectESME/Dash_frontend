@@ -52,7 +52,7 @@ class _PriceWidgetState extends State<PriceWidget> {
                 borderRadius: BorderRadius.circular(50)),
 
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                  Padding(
                    padding: const EdgeInsets.symmetric(horizontal : 4.0),

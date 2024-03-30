@@ -56,8 +56,6 @@ class _PriceComponentState extends State<PriceComponent> {
               PriceWidget(),
               PriceWidget(),
               PriceWidget(),
-              PriceWidget(),
-              PriceWidget()
             ], // Empty initially
           )
         ],
