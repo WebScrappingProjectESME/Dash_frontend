@@ -1,5 +1,6 @@
 // lib
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
@@ -29,7 +30,7 @@ class _SideBarState extends State<SideBar> {
     final data = await jsonDecode(response);
 
     setState(() {
-      fetchedNames = data["games"].map((obj) => obj["name"]);
+      fetchedNames = List<String>.from(data["games"].map((obj) => obj["name"]));
     });
   }
 
@@ -38,6 +39,8 @@ class _SideBarState extends State<SideBar> {
       isExtended = !isExtended;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
