@@ -25,7 +25,7 @@ class _PriceWidgetState extends State<PriceWidget> {
     final data = await jsonDecode(response);
 
     setState(() {
-      fetchedPrice = data["games"][1]["score"];
+      fetchedPrice = data["games"][1]["review"];
     });
   }
 

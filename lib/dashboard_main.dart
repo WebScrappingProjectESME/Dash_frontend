@@ -1,6 +1,8 @@
 // Lib
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 // Dart pages files
 import 'package:main_project/Components/price_component.dart';
@@ -8,6 +10,9 @@ import 'package:main_project/Components/sidebar_menu.dart';
 import 'package:main_project/components/gallery_component.dart';
 import 'package:main_project/components/info_component.dart';
 import 'package:main_project/components/line_chart_component.dart';
+
+// Types
+import 'package:main_project/types/games.dart';
 
 
 // type defs
@@ -24,16 +29,35 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
 
-  int gameId = 0;
+  List<Game> games = [];
+  Game selectedGame = Game(name: "", review: 0, price: "", screenshotUrl: "");
 
-  void updateId(int newId) {
+  Future<void> initialize() async {
+
+    final String response = await rootBundle.loadString('data_files/Data.json');
+    final data = await jsonDecode(response);
+
     setState(() {
-      gameId = newId;
+      games = List<Game>.from(data["games"].map((obj) => Game.fromJson(obj)));
+      selectedGame = games[0];
+    });
+  }
+
+  void updateGame(int newId) {
+    setState(() {
+      selectedGame = games[newId];
     });
   }
 
   @override
+  void initState() {
+    super.initState();
+    initialize();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Material(
       color: const Color(0xff171717),
 
@@ -44,6 +68,8 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
+
+
 
   Widget _buildLayout() {
     return LayoutGrid(
@@ -57,7 +83,7 @@ class _DashboardState extends State<Dashboard> {
 
         children: [
 
-          SideBar(onButtonSelection: (int newId) { updateId(newId); }).inGridArea("nav"),
+          SideBar(gameData:selectedGame,onButtonSelection: (int newId) { updateGame(newId); }).inGridArea("nav"),
 
           LayoutGrid(
 
@@ -78,13 +104,13 @@ class _DashboardState extends State<Dashboard> {
             gridFit: GridFit.expand,
 
             children: [
-              GalleryComponent(gameId: gameId).inGridArea("image"),
+              GalleryComponent(gameData: selectedGame).inGridArea("image"),
 
-              InfoComponent(gameId: gameId).inGridArea("general"),
+              InfoComponent(gameData: selectedGame).inGridArea("general"),
 
               const LineChartComponent().inGridArea("population"),
 
-              PriceComponent(gameId: gameId).inGridArea("reduction"), // History Widget
+              PriceComponent(gameData: selectedGame).inGridArea("reduction"), // History Widget
             ],
           ),
         ]

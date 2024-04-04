@@ -1,42 +1,30 @@
 // libs
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
-import 'dart:convert';
 
 // pages
 import 'layout_component.dart';
 import 'layout_component_header.dart';
 import 'score_gauge.dart';
 
+// types
+import 'package:main_project/types/games.dart';
+
 
 
 class InfoComponent extends StatefulWidget {
-  final int gameId;
+  final Game gameData;
 
-  const InfoComponent({super.key, required this.gameId});
+  const InfoComponent({super.key, required this.gameData});
 
   @override
   State<InfoComponent> createState() => _InfoComponentState();
 }
 
 class _InfoComponentState extends State<InfoComponent> {
-  double fetchedScore = 0;
-
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('data_files/Data.json');
-    final data = await jsonDecode(response);
-
-    setState(() {
-      fetchedScore = data["games"][widget.gameId]["score"];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-
-    readJson();
-
     return LayoutComponent(
       LayoutGrid(
         areas:
@@ -65,7 +53,7 @@ class _InfoComponentState extends State<InfoComponent> {
             height: double.maxFinite,
             constraints: const BoxConstraints(minWidth: 250, maxWidth: 250),
 
-            child: ScoreGauge(value: fetchedScore),
+            child: ScoreGauge(value: widget.gameData.review),
           ).inGridArea("score"),
 
           Card(

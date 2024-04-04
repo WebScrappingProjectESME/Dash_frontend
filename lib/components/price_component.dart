@@ -2,41 +2,25 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
 
 //pages
 import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_header_price_component.dart';
 import 'package:main_project/components/price_widget.dart';
-import 'package:main_project/components/layout_component_header.dart';
+
+// types
+import 'package:main_project/types/games.dart';
 
 class PriceComponent extends StatefulWidget {
-  final int gameId;
+  final Game gameData;
 
-  const PriceComponent({super.key, required this.gameId});
+  const PriceComponent({super.key, required this.gameData});
 
   @override
   State<PriceComponent> createState() => _PriceComponentState();
 }
 
 class _PriceComponentState extends State<PriceComponent> {
-  String fetchedPrice = "";
-
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('data_files/Data.json');
-    final data = await jsonDecode(response);
-
-    setState(() {
-      fetchedPrice = data["games"][widget.gameId]["price"];
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    readJson();
-  }
 
   @override
   Widget build(BuildContext context) {
