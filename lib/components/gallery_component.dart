@@ -1,8 +1,6 @@
 // libs
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
-import 'dart:convert';
 
 //pages
 import 'package:main_project/components/layout_component.dart ';
@@ -39,10 +37,11 @@ class _GalleryComponentState extends State<GalleryComponent> {
 
           children: [
             LayoutComponentHeader(
+              size: 40,
               icon: Icons.bubble_chart,
               iconColor: Colors.greenAccent[400],
               iconColorBg: const Color(0xff006200).withAlpha(80),
-              data: widget.gameData.name,
+              text: widget.gameData.name,
               fontWeight: FontWeight.bold,
             ).inGridArea('header'),
 

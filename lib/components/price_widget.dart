@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
-import 'package:main_project/dashboard_main.dart';
-
 //pages
 //import 'package:main_project/components/layout_component.dart ';
 //import 'package:main_project/components/layout_header_price_component.dart';
