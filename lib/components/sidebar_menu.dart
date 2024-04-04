@@ -222,7 +222,7 @@ class IconButtonOpen extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 5),
                   child: Icon(icon, color: color),
                 ),
-                Expanded(child:  Text(data, style: TextStyle(color: color)))
+                Expanded(child:  Text(data, style: TextStyle(color: color),overflow: TextOverflow.fade,))
               ],
         ),
       ),
