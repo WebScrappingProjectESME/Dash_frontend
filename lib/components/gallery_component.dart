@@ -7,39 +7,23 @@ import 'dart:convert';
 //pages
 import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
+import 'package:main_project/types/games.dart';
 
 
 
 class GalleryComponent extends StatefulWidget {
-  final int gameId;
+  final Game gameData;
 
-  const GalleryComponent({super.key, required this.gameId});
+  const GalleryComponent({super.key, required this.gameData});
 
   @override
   State<GalleryComponent> createState() => _GalleryComponentState();
 }
 
 class _GalleryComponentState extends State<GalleryComponent> {
-  String fetchedName = "";
-  Image fetchedImage = Image.asset("images/5596.jpg");
-
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('data_files/Data.json');
-    final data = await jsonDecode(response);
-
-    setState(() {
-      fetchedName = data["games"][widget.gameId]["name"];
-
-      String url = data["games"][widget.gameId]["thumbnail_URL"];
-      fetchedImage = Image.network(url);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-
-    readJson();
-
     return LayoutComponent(
         LayoutGrid(
           areas:  '''
@@ -58,14 +42,14 @@ class _GalleryComponentState extends State<GalleryComponent> {
               icon: Icons.bubble_chart,
               iconColor: Colors.greenAccent[400],
               iconColorBg: const Color(0xff006200).withAlpha(80),
-              data: fetchedName,
+              data: widget.gameData.name,
               fontWeight: FontWeight.bold,
             ).inGridArea('header'),
 
             ClipRRect(
               borderRadius: BorderRadius.circular(25),
               child: Image(
-                image: fetchedImage.image,
+                image: Image.network(widget.gameData.screenshotUrl).image,
                 width: double.maxFinite,
                 fit: BoxFit.fitWidth,
               )

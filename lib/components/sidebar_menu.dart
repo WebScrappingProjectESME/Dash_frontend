@@ -1,8 +1,8 @@
 // lib
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
+
+// types
+import 'package:main_project/types/games.dart';
 
 // types def
 typedef IntCallback = void Function(int appId);
@@ -11,8 +11,9 @@ typedef IntCallback = void Function(int appId);
 
 class SideBar extends StatefulWidget {
   final IntCallback onButtonSelection;
+  final Game gameData;
 
-  const SideBar({super.key, required this.onButtonSelection});
+  const SideBar({super.key, required this.onButtonSelection, required this.gameData});
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -21,18 +22,7 @@ class SideBar extends StatefulWidget {
 
 class _SideBarState extends State<SideBar> {
   bool isExtended = false;
-  int appIdSelected = 0;
-
-  List<String> fetchedNames = [];
-
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('data_files/Data.json');
-    final data = await jsonDecode(response);
-
-    setState(() {
-      fetchedNames = List<String>.from(data["games"].map((obj) => obj["name"]));
-    });
-  }
+  int selectedGameId = 0;
 
   void extend() {
     setState(() {
@@ -41,12 +31,8 @@ class _SideBarState extends State<SideBar> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
-
-    readJson();
-
     return AnimatedContainer(
       width: isExtended ? 300 : 65,
 
@@ -73,11 +59,11 @@ class _SideBarState extends State<SideBar> {
 
           Column(
             children: [
-              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: fetchedNames[0],appId: 0, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: fetchedNames[1], appId: 1, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: fetchedNames[2], appId: 2, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: fetchedNames[3], appId: 3, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: fetchedNames[4], appId: 4, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gameData.name,appId: 0, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gameData.name, appId: 1, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gameData.name, appId: 2, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gameData.name, appId: 3, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gameData.name, appId: 4, onPressedCallback: widget.onButtonSelection),
             ],
           ),
 
