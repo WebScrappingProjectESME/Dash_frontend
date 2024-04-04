@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:main_project/components/layout_component_header.dart';
 
 class LayoutHeaderPriceComponent extends StatelessWidget {
   const LayoutHeaderPriceComponent({super.key});

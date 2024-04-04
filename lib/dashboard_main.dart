@@ -30,7 +30,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   List<Game> games = [];
-  Game selectedGame = Game(name: "", review: 0, price: "", screenshotUrl: "");
+  Game selectedGame = Game(name: "", review: 0, price: "", screenshotUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394");
 
   Future<void> initialize() async {
 
