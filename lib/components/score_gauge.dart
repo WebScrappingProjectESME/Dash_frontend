@@ -7,6 +7,9 @@ import 'package:gauge_indicator/gauge_indicator.dart';
 class ScoreGauge extends StatelessWidget {
   final double value;
 
+  final double fontsizeScaleFactor = 0.03;
+  final double thicknessScaleFactor = 0.015;
+
   const ScoreGauge({this.value=0, super.key});
 
   @override
@@ -20,8 +23,7 @@ class ScoreGauge extends StatelessWidget {
         value: value,
         style: TextStyle(
             color: Colors.white,
-            fontSize: MediaQuery.of(context).size.height * 0.06,
-            fontWeight: FontWeight.bold
+            fontSize: MediaQuery.of(context).size.height * fontsizeScaleFactor,
         ),
       ),
 
@@ -31,7 +33,7 @@ class ScoreGauge extends StatelessWidget {
           degrees: 230,
 
           style: GaugeAxisStyle(
-            thickness: MediaQuery.of(context).size.height * 0.025,
+            thickness: MediaQuery.of(context).size.height * thicknessScaleFactor,
             background: Colors.transparent,
             segmentSpacing: 20,
             cornerRadius: const Radius.circular(100),

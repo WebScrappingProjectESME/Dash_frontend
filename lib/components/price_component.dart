@@ -26,24 +26,20 @@ class _PriceComponentState extends State<PriceComponent> {
   Widget build(BuildContext context) {
     //readJson();
     return LayoutComponent(
-      Column(
-        children: [
-          const LayoutHeaderPriceComponent(), // Header
+      header: const LayoutHeaderPriceComponent(),
 
-          ListView(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            //padding: const EdgeInsets.all(5.0),
-            children: const [
-              PriceWidget(),
-              PriceWidget(),
-              PriceWidget(),
-              PriceWidget(),
-              PriceWidget(),
-            ], // Empty initially
-          )
-        ],
-      ),
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        //padding: const EdgeInsets.all(5.0),
+        children: const [
+          PriceWidget(),
+          PriceWidget(),
+          PriceWidget(),
+          PriceWidget(),
+          PriceWidget(),
+        ], // Empty initially
+      )
     );
   }
 }

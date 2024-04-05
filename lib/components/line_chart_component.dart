@@ -21,20 +21,15 @@ class _LineChartComponentState extends State<LineChartComponent> {
   @override
   Widget build(BuildContext context) {
     return LayoutComponent(
-      Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          LayoutComponentHeader(
-            size: 40,
-            icon: Icons.show_chart,
-            text: "Population",
-            iconColor: Colors.greenAccent[400],
-            iconColorBg: const Color(0xff006200).withAlpha(80),
-          ),
+      header: LayoutComponentHeader(
+        size: 40,
+        icon: Icons.show_chart,
+        text: "Population",
+        iconColor: Colors.pinkAccent,
+        iconColorBg: const Color(0xff81007c).withAlpha(80),
+      ),
 
-          const LineChartSample2(),
-        ],
-    )
-          );
+      child: const LineChartSample2()
+    );
   }
 }

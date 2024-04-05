@@ -16,14 +16,14 @@ class LayoutHeaderPriceComponent extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                    color: const Color(0xff006200).withAlpha(80),
+                    color: const Color(0xfff07800).withAlpha(80),
                     borderRadius: BorderRadius.circular(100)
                 ),
 
-                child: Center(
+                child: const Center(
                     child: Icon(
                         Icons.bar_chart,
-                        color: Colors.greenAccent[400],
+                        color: Colors.orangeAccent,
                         size: 30
                     )
                 )
