@@ -32,12 +32,12 @@ class _PriceComponentState extends State<PriceComponent> {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         //padding: const EdgeInsets.all(5.0),
-        children: const [
-          PriceWidget(),
-          PriceWidget(),
-          PriceWidget(),
-          PriceWidget(),
-          PriceWidget(),
+        children: [
+          PriceWidget(gameData: widget.gameData),
+          PriceWidget(gameData: widget.gameData),
+          PriceWidget(gameData: widget.gameData),
+          PriceWidget(gameData: widget.gameData),
+          PriceWidget(gameData: widget.gameData),
         ], // Empty initially
       )
     );

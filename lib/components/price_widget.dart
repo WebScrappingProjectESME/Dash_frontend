@@ -1,45 +1,29 @@
 // libs
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:convert';
 
-//pages
-//import 'package:main_project/components/layout_component.dart ';
-//import 'package:main_project/components/layout_header_price_component.dart';
-//import 'package:main_project/components/price_widget.dart';
+import 'package:main_project/types/games.dart';
+
 
 class PriceWidget extends StatefulWidget {
-  const PriceWidget({super.key});
+  final Game gameData;
+
+  const PriceWidget({super.key,required this.gameData});
 
   @override
   State<PriceWidget> createState() => _PriceWidgetState();
 }
 
 class _PriceWidgetState extends State<PriceWidget> {
-  double fetchedPrice = 0;
-
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('data_files/Data.json');
-    final data = await jsonDecode(response);
-
-    setState(() {
-      fetchedPrice = data["games"][1]["review"];
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    readJson();
-  }
 
   @override
   Widget build(BuildContext context) {
-    //readJson();
+
     return Container( // Caintainer for margins bewteen objects
       margin: const EdgeInsets.symmetric(vertical: 3),
       child : Stack(
         children: [
+
           Container( // Box
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10.0),
@@ -50,7 +34,7 @@ class _PriceWidgetState extends State<PriceWidget> {
                 borderRadius: BorderRadius.circular(50)),
 
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                  Padding(
                    padding: const EdgeInsets.symmetric(horizontal : 4.0),
@@ -65,8 +49,8 @@ class _PriceWidgetState extends State<PriceWidget> {
                         border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                         borderRadius: BorderRadius.circular(50)),
 
-                    child: const Text('39€', style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
-                                   ),
+                    child: const Text("39.99€", style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
+                   ),
                  ),
 
                 Padding(
@@ -100,8 +84,8 @@ class _PriceWidgetState extends State<PriceWidget> {
                         border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                         borderRadius: BorderRadius.circular(50)),
 
-                    child: const Text('30%', style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
-                                   ),
+                    child: Text("${widget.gameData.reduction}%", style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
+                   ),
                  ),
               ],
             ),

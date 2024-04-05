@@ -12,6 +12,7 @@ class Game{
   final double review;
   final double dlc;
   final double duration;
+  final double reduction;
 
   @JsonKey(name: "in_game_pop")
   final double inGamePop;
@@ -25,6 +26,7 @@ class Game{
     required this.review,
     required this.dlc,
     required this.duration,
+    required this.reduction,
     required this.inGamePop,
     required this.screenshotUrl
   });
