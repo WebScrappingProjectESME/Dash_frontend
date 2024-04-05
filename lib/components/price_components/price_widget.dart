@@ -5,16 +5,16 @@ import 'dart:convert';
 import 'package:main_project/types/games.dart';
 
 
-class PriceWidget extends StatefulWidget {
+class SaleshRecordWidget extends StatefulWidget {
   final Game gameData;
 
-  const PriceWidget({super.key,required this.gameData});
+  const SaleshRecordWidget({super.key,required this.gameData});
 
   @override
-  State<PriceWidget> createState() => _PriceWidgetState();
+  State<SaleshRecordWidget> createState() => _SaleshRecordWidgetState();
 }
 
-class _PriceWidgetState extends State<PriceWidget> {
+class _SaleshRecordWidgetState extends State<SaleshRecordWidget> {
 
   @override
   Widget build(BuildContext context) {

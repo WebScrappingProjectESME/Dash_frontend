@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 //pages
 import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
-import 'package:main_project/components/line_chart.dart';
+import 'package:main_project/components/line_chart_components/line_chart.dart';
 
 
 class LineChartComponent extends StatefulWidget {

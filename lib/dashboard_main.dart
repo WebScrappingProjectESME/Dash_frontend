@@ -5,15 +5,14 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 // Dart pages files
-import 'package:main_project/Components/price_component.dart';
-import 'package:main_project/Components/sidebar_menu.dart';
-import 'package:main_project/components/gallery_component.dart';
-import 'package:main_project/components/info_component.dart';
-import 'package:main_project/components/line_chart_component.dart';
+import 'package:main_project/Components/price_components/price_component.dart';
+import 'package:main_project/Components/sidebar_components/sidebar_menu.dart';
+import 'package:main_project/components/gallery_components/gallery_main.dart';
+import 'package:main_project/components/general_infos_components/info_component.dart';
+import 'package:main_project/components/line_chart_components/line_chart_component.dart';
 
 // Types
 import 'package:main_project/types/games.dart';
-
 
 // type defs
 typedef IntCallback = void Function(int appId);

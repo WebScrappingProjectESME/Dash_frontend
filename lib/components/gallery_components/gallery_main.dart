@@ -1,12 +1,16 @@
-// libs
+// Libs
 import 'package:flutter/material.dart';
 
-//pages
+// Pages
 import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
+
+// Type
 import 'package:main_project/types/games.dart';
 
 
+
+// Code
 
 class GalleryComponent extends StatefulWidget {
   final Game gameData;

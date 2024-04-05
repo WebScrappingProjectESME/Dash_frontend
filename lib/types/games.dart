@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-// to build this generated file : dart run build_runner build
+// To build this generated file : dart run build_runner build
 part 'games.g.dart';
 
 

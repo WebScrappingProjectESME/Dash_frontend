@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 //pages
 import 'package:main_project/components/layout_component.dart ';
-import 'package:main_project/components/layout_header_price_component.dart';
-import 'package:main_project/components/price_widget.dart';
+import 'package:main_project/components/price_components/layout_header_price_component.dart';
+import 'package:main_project/components/price_components/price_widget.dart';
 
 // types
 import 'package:main_project/types/games.dart';
@@ -33,11 +33,11 @@ class _PriceComponentState extends State<PriceComponent> {
         scrollDirection: Axis.vertical,
         //padding: const EdgeInsets.all(5.0),
         children: [
-          PriceWidget(gameData: widget.gameData),
-          PriceWidget(gameData: widget.gameData),
-          PriceWidget(gameData: widget.gameData),
-          PriceWidget(gameData: widget.gameData),
-          PriceWidget(gameData: widget.gameData),
+          SaleshRecordWidget(gameData: widget.gameData),
+          SaleshRecordWidget(gameData: widget.gameData),
+          SaleshRecordWidget(gameData: widget.gameData),
+          SaleshRecordWidget(gameData: widget.gameData),
+          SaleshRecordWidget(gameData: widget.gameData),
         ], // Empty initially
       )
     );
