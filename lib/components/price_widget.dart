@@ -36,9 +36,9 @@ class _PriceWidgetState extends State<PriceWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Padding(
+                 Padding( // pastille prix
                    padding: const EdgeInsets.symmetric(horizontal : 4.0),
-                   child: Container( // Price text
+                   child: Container(
                     //margin:  const EdgeInsets.symmetric(vertical : 8, horizontal: 10),
                     alignment: Alignment.center,
                     //padding: const EdgeInsets.all(30.0),
@@ -49,13 +49,13 @@ class _PriceWidgetState extends State<PriceWidget> {
                         border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                         borderRadius: BorderRadius.circular(50)),
 
-                    child: const Text("39.99€", style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
+                    child: Text("${widget.gameData.price}€", style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
                    ),
                  ),
 
-                Padding(
+                Padding( //date
                   padding: const EdgeInsets.symmetric(horizontal : 4.0),
-                  child: Container( // Reduc text
+                  child: Container(
                     //margin: const EdgeInsets.symmetric(vertical : 8, horizontal: 75),
                     alignment: Alignment.center,
                     //padding: const EdgeInsets.all(30.0),
@@ -66,14 +66,13 @@ class _PriceWidgetState extends State<PriceWidget> {
                         border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                         borderRadius: BorderRadius.circular(50)),
 
-                    child: const Text('11th. June', style: TextStyle(color: Color(
-                        0xffffffff), fontWeight: FontWeight.bold)),
+                    child: const Text('11th. June', style: TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.bold)),
                   ),
                 ),
 
-                 Padding(
+                 Padding( // pastille réduction
                    padding: const EdgeInsets.symmetric(horizontal : 4.0),
-                   child: Container( // Reduc text
+                   child: Container(
                     //margin: const EdgeInsets.symmetric(vertical : 8, horizontal: 75),
                     alignment: Alignment.center,
                     //padding: const EdgeInsets.all(30.0),
