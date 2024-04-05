@@ -44,12 +44,15 @@ class LayoutComponentHeader extends StatelessWidget {
           )
         ),
 
-        Text(
-          text.toUpperCase(),
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: size - 12,
-            fontWeight: fontWeight
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: size - 12,
+              fontWeight: fontWeight
+            ),
           ),
         )
 
