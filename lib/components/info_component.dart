@@ -22,7 +22,8 @@ class InfoComponent extends StatefulWidget {
 }
 
 class _InfoComponentState extends State<InfoComponent> {
-  double population = -25;
+  double population = 25.2;
+  double spaceBetweenValueUnity = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,7 @@ class _InfoComponentState extends State<InfoComponent> {
 
       children: [
 
+
         LayoutComponent(
             header: LayoutComponentHeader(
               size: 30,
@@ -54,16 +56,36 @@ class _InfoComponentState extends State<InfoComponent> {
 
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text(
-                widget.gameData.price,
-                style: const TextStyle(
-                  height: double.minPositive,
-                  color: Colors.white,
-                  fontSize: 40
-                ),
+
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+
+                children: [
+                  Text(
+                    widget.gameData.price.toString(),
+                    style: const TextStyle(
+                      height: double.minPositive,
+                      color: Colors.white,
+                      fontSize: 35
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.only(left: spaceBetweenValueUnity),
+
+                    child: const Text(
+                      "€",
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 25
+                      ),
+                    ),
+                  )
+                ],
               ),
             )
         ).inGridArea("Price"),
+
 
         LayoutComponent(
             header: LayoutComponentHeader(
@@ -81,6 +103,7 @@ class _InfoComponentState extends State<InfoComponent> {
           ),
         ).inGridArea("Score"),
 
+
         LayoutComponent(
             header: LayoutComponentHeader(
               size: 30,
@@ -90,18 +113,44 @@ class _InfoComponentState extends State<InfoComponent> {
               text: "In Game",
             ),
 
-            child: const Align(
+            child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text(
-                  "20000",
-                  style:  TextStyle(
-                    height: double.minPositive,
-                    color: Colors.white,
-                    fontSize: 40,
+
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                      widget.gameData.inGamePop.toString(),
+                      style:  const TextStyle(
+                        height: double.minPositive,
+                        color: Colors.white,
+                        fontSize: 35,
+                      )
+                  ),
+
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+
+                    decoration: BoxDecoration(
+                      color: population>0 ? const Color(0xff006200).withAlpha(80) : const Color(0xff770000).withAlpha(80),
+                      borderRadius: BorderRadius.circular(100)
+                    ),
+
+                    child: Text(
+                      population>0 ? "+$population% in 24h" : "$population% in 24h",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: population>0 ? Colors.greenAccent : Colors.redAccent,
+                        fontSize: 15
+                      ),
+                    ),
                   )
+                ],
               ),
             )
         ).inGridArea("Population"),
+
 
         LayoutComponent(
             header: LayoutComponentHeader(
@@ -115,36 +164,93 @@ class _InfoComponentState extends State<InfoComponent> {
             child: Container()
         ).inGridArea("Action"),
 
+
         LayoutComponent(
             header: LayoutComponentHeader(
               size: 30,
               icon: Icons.add_circle_outline,
-              iconColor: Colors.purpleAccent,
-              iconColorBg: const Color(0xff620055).withAlpha(80),
+              iconColor: Colors.redAccent,
+              iconColorBg: const Color(0xff620000).withAlpha(80),
               text: "DLC",
             ),
 
-            child: Container()
+            child: Align(
+              alignment: Alignment.bottomLeft,
+
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                      widget.gameData.dlc.toString(),
+                      style:  const TextStyle(
+                        height: double.minPositive,
+                        color: Colors.white,
+                        fontSize: 40,
+                      )
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.only(left: spaceBetweenValueUnity),
+                    child: const Text(
+                      "DLC",
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 20
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
         ).inGridArea("Dlc"),
+
 
         LayoutComponent(
             header: LayoutComponentHeader(
               size: 30,
               icon: Icons.timer_sharp,
-              iconColor: Colors.purpleAccent,
-              iconColorBg: const Color(0xff620055).withAlpha(80),
+              iconColor: Colors.redAccent,
+              iconColorBg: const Color(0xff620000).withAlpha(80),
               text: "Time Length",
             ),
 
-            child: Container()
+            child: Align(
+              alignment: Alignment.bottomLeft,
+
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                      widget.gameData.duration.toString(),
+                      style:  const TextStyle(
+                        height: double.minPositive,
+                        color: Colors.white,
+                        fontSize: 40,
+                      )
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.only(left: spaceBetweenValueUnity),
+                    child: const Text(
+                      "H",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
         ).inGridArea("Time"),
+
 
         LayoutComponent(
             header: LayoutComponentHeader(
               size: 30,
               icon: Icons.tag,
-              iconColor: Colors.redAccent,
-              iconColorBg: const Color(0xff770000).withAlpha(80),
+              iconColor: Colors.grey,
+              iconColorBg: const Color(0xff424242).withAlpha(80),
               text: "Related Tags",
             ),
 
@@ -154,174 +260,3 @@ class _InfoComponentState extends State<InfoComponent> {
     );
   }
 }
-
-
-
-
-// columnGap: 20,
-// rowGap: 20,
-// gridFit: GridFit.expand,
-//
-// children: [
-//
-// LayoutComponent(
-// childWidget:
-// ),
-//
-// Card(
-// shape: RoundedRectangleBorder(
-// borderRadius: BorderRadius.circular(25),
-// ),
-// color: const Color(0xff171717),
-//
-// child: Padding(
-// padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
-// child: LayoutGrid(
-// areas: '''header    24h
-//                             component evo''',
-//
-// columnSizes: [1.fr,auto],
-// rowSizes: [auto, 1.fr],
-//
-// children: [
-//
-//
-// Container(
-// height: 30,
-// width: 60,
-// decoration: BoxDecoration(
-// color: const  Color(0xff060202),
-// borderRadius: BorderRadius.circular(100)
-// ),
-// child: const Center(
-// child: Text(
-// "24h",
-// style: TextStyle(
-// color: Colors.grey
-// ),
-// ),
-// ),
-// ).inGridArea("24h"),
-//
-//
-// Center(
-// child: Container(
-// width: 60,
-// height: 30,
-// margin: const EdgeInsets.only(bottom: 2),
-// decoration: BoxDecoration(
-// borderRadius: BorderRadius.circular(100),
-// color: population>0 ? const Color(0xff006200).withAlpha(80) : const Color(0xff620017).withAlpha(80)
-// ),
-//
-// child: Center(
-// child: Text(
-// population>0 ? "+$population%" : "$population%",
-// style: TextStyle(
-// color: population>0 ? Colors.greenAccent[400] : Colors.redAccent[400],
-// fontWeight: FontWeight.bold
-// ),
-// ),
-// ),
-// ).inGridArea("evo"),
-// )
-// ],
-// ),
-// ),
-// ).inGridArea("pop"),
-//
-
-
-// Card(
-// shape: RoundedRectangleBorder(
-// borderRadius: BorderRadius.circular(25)
-// ),
-// color: const Color(0xff171717),
-//
-// child: const Center(child: Text("dlc",style: TextStyle(color: Colors.white),)),
-// ).inGridArea("dlc"),
-//
-// Card(
-// shape: RoundedRectangleBorder(
-// borderRadius: BorderRadius.circular(25)
-// ),
-// color: const Color(0xff171717),
-//
-// child: const Center(child: Text("heures",style: TextStyle(color: Colors.white),)),
-// ).inGridArea("heures"),
-//
-// Card(
-// shape: RoundedRectangleBorder(
-// borderRadius: BorderRadius.circular(25)
-// ),
-// color: const Color(0xff171717),
-//
-// child: Padding(
-// padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
-//
-// child: LayoutGrid(
-// areas: '''header    buy
-//                           component buy''',
-//
-// columnSizes: [1.fr, auto],
-// rowSizes: [auto, 1.fr],
-//
-// children: [
-// const LayoutComponentHeader(
-// size: 30,
-// icon: Icons.euro,
-// iconColor: Colors.white,
-// iconColorBg: Color(0xff060202),
-// text: "PRICE",
-// ).inGridArea("header"),
-//
-// Center(
-// child:
-// Text(widget.gameData.price,
-// style:  const TextStyle(
-// color: Colors.white,
-// fontSize: 28,
-// fontWeight: FontWeight.bold
-// )
-// )
-// ).inGridArea("component"),
-//
-// Container(
-// width: 60,
-// margin: const EdgeInsets.only(bottom: 15),
-// decoration: BoxDecoration(
-// borderRadius: BorderRadius.circular(15),
-// color: const Color(0xff006200).withAlpha(80)
-// ),
-//
-// child: Center(
-// child: Text(
-// "BUY",
-// style: TextStyle(
-// color: Colors.greenAccent[400],
-// fontSize: 20,
-// fontWeight: FontWeight.bold
-// ),
-// ),
-// ),
-// ).inGridArea("buy")
-// ],
-// ),
-// ),
-// ).inGridArea("prix"),
-//
-// Card(
-// shape: RoundedRectangleBorder(
-// borderRadius: BorderRadius.circular(25)
-// ),
-// color: const Color(0xff171717),
-//
-// child: const Center(child: Text("tags",style: TextStyle(color: Colors.white),)),
-// ).inGridArea("tags"),
-// ],
-// );
-
-
-
-
-
