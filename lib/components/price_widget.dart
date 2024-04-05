@@ -45,11 +45,11 @@ class _PriceWidgetState extends State<PriceWidget> {
                     height: 32.0,
                     width: 58.0,
                     decoration: BoxDecoration(
-                        color: const Color(0xff006200).withAlpha(600),
+                        color: const Color(0xff006200).withAlpha(80),
                         border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                         borderRadius: BorderRadius.circular(50)),
 
-                    child: Text("${widget.gameData.price}€", style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
+                    child: Text("${widget.gameData.price}€", style: TextStyle(color: Colors.greenAccent.shade400, fontWeight: FontWeight.bold)), // (value<50 ? Colors.red : (value<75 ? Colors.orange : Colors.green ))
                    ),
                  ),
 
@@ -79,11 +79,11 @@ class _PriceWidgetState extends State<PriceWidget> {
                     height: 32.0,
                     width: 58.0,
                     decoration: BoxDecoration(
-                        color: const Color(0xff006200).withAlpha(600),
+                        color: (widget.gameData.price<50 ? Colors.red.withAlpha(70) : (widget.gameData.price<75 ? Colors.orange.withAlpha(70) : Colors.green.withAlpha(70) )),
                         border: Border.all(color: Colors.greenAccent.withAlpha(0), width: 2.0),
                         borderRadius: BorderRadius.circular(50)),
 
-                    child: Text("${widget.gameData.reduction}%", style: TextStyle(color: Color(0xff00E676), fontWeight: FontWeight.bold)),
+                    child: Text("${widget.gameData.reduction}%", style: TextStyle(color:  (widget.gameData.reduction<50 ? Colors.redAccent : (widget.gameData.reduction<75 ? Colors.orangeAccent : Colors.greenAccent )), fontWeight: FontWeight.bold)),
                    ),
                  ),
               ],
