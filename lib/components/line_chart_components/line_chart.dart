@@ -52,24 +52,6 @@ class _LineChartSample2State extends State<LineChartSample2> {
             ),
           ),
         ),
-        SizedBox(
-          width: 60,
-          height: 34,
-          child: TextButton(
-            onPressed: () {
-              setState(() {
-                showAvg = !showAvg;
-              });
-            },
-            child: Text(
-              'avg',
-              style: TextStyle(
-                fontSize: 12,
-                color: showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -181,18 +163,17 @@ class _LineChartSample2State extends State<LineChartSample2> {
         LineChartBarData(
           spots: const [
             FlSpot(0, 3),
-            FlSpot(1.3, 2),
-            FlSpot(2.6, 5),
-            FlSpot(3.5, 3.1),
-            FlSpot(4.9, 4),
-            FlSpot(5.4, 3),
-            FlSpot(6.8, 4),
-            FlSpot(7.2, 3),
+            FlSpot(1, 2),
+            FlSpot(2, 5),
+            FlSpot(3, 3.1),
+            FlSpot(4, 4),
+            FlSpot(5, 3),
+            FlSpot(6, 4),
+            FlSpot(7, 3),
             FlSpot(8, 2),
-            FlSpot(9.1, 5),
-            FlSpot(9.5, 3.1),
+            FlSpot(9, 5),
+            FlSpot(10, 3.1),
             FlSpot(11, 4),
-            FlSpot(11.6, 3),
             FlSpot(12, 4),
           ],
           isCurved: true,
