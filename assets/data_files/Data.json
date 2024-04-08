@@ -9,7 +9,15 @@
       "duration": 90,
       "reduction": -50,
 
-      "screenshot_URL": "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394"
+      "screenshot_URL": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
+        "https://cdn.akamai.steamstatic.com/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.600x338.jpg?t=1710346933",
+        "https://cdn.akamai.steamstatic.com/steam/apps/949230/ss_5f34572d699cb4884aed4bd9a857e87362260f0a.600x338.jpg?t=1711388424",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
+      ]
+
+
     },
     {
       "name": "Dota 2",
@@ -20,7 +28,14 @@
       "duration": 60,
       "reduction": -70,
 
-      "screenshot_URL": "https://cdn.akamai.steamstatic.com/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.600x338.jpg?t=1710346933"
+      "screenshot_URL": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
+        "https://cdn.akamai.steamstatic.com/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.600x338.jpg?t=1710346933",
+        "https://cdn.akamai.steamstatic.com/steam/apps/949230/ss_5f34572d699cb4884aed4bd9a857e87362260f0a.600x338.jpg?t=1711388424",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
+      ]
+
     },
     {
       "name": "Cities: Skylines II",
@@ -31,7 +46,14 @@
       "duration": 100,
       "reduction": -30,
 
-      "screenshot_URL": "https://cdn.akamai.steamstatic.com/steam/apps/949230/ss_5f34572d699cb4884aed4bd9a857e87362260f0a.600x338.jpg?t=1711388424"
+      "screenshot_URL": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
+        "https://cdn.akamai.steamstatic.com/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.600x338.jpg?t=1710346933",
+        "https://cdn.akamai.steamstatic.com/steam/apps/949230/ss_5f34572d699cb4884aed4bd9a857e87362260f0a.600x338.jpg?t=1711388424",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
+      ]
+
     },
     {
       "name": "Minecraft Dungeons",
@@ -42,7 +64,14 @@
       "duration": 40,
       "reduction": -20,
 
-      "screenshot_URL": "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975"
+      "screenshot_URL": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
+        "https://cdn.akamai.steamstatic.com/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.600x338.jpg?t=1710346933",
+        "https://cdn.akamai.steamstatic.com/steam/apps/949230/ss_5f34572d699cb4884aed4bd9a857e87362260f0a.600x338.jpg?t=1711388424",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
+      ]
+
     },
     {
       "name": "Destiny 2",
@@ -53,7 +82,14 @@
       "duration": 70,
       "reduction": -90,
 
-      "screenshot_URL": "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
+      "screenshot_URL": [
+        "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
+        "https://cdn.akamai.steamstatic.com/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.600x338.jpg?t=1710346933",
+        "https://cdn.akamai.steamstatic.com/steam/apps/949230/ss_5f34572d699cb4884aed4bd9a857e87362260f0a.600x338.jpg?t=1711388424",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975",
+        "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
+      ]
+
     }
   ]
 }

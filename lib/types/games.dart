@@ -18,7 +18,7 @@ class Game{
   final double inGamePop;
 
   @JsonKey(name: "screenshot_URL")
-  final String screenshotUrl;
+  final List<String> screenshotUrl;
 
   Game({
     required this.name,
