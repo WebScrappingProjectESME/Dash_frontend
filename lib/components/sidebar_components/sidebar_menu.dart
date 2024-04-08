@@ -11,9 +11,10 @@ typedef IntCallback = void Function(int appId);
 
 class SideBar extends StatefulWidget {
   final IntCallback onButtonSelection;
-  final Game gameData;
+  //final Game gameData;
+  List<Game> gameData;
 
-  const SideBar({super.key, required this.onButtonSelection, required this.gameData});
+  SideBar({super.key, required this.onButtonSelection, required this.gameData});
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -59,11 +60,11 @@ class _SideBarState extends State<SideBar> {
 
           Column(
             children: [
-              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gameData.name,appId: 0, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gameData.name, appId: 1, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gameData.name, appId: 2, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gameData.name, appId: 3, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gameData.name, appId: 4, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gameData[0].name,appId: 0, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gameData[1].name, appId: 1, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gameData[2].name, appId: 2, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gameData[3].name, appId: 3, onPressedCallback: widget.onButtonSelection),
+              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gameData[4].name, appId: 4, onPressedCallback: widget.onButtonSelection),
             ],
           ),
 
