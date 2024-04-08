@@ -14,7 +14,9 @@ Game _$GameFromJson(Map<String, dynamic> json) => Game(
       duration: (json['duration'] as num).toDouble(),
       reduction: (json['reduction'] as num).toDouble(),
       inGamePop: (json['in_game_pop'] as num).toDouble(),
-      screenshotUrl: json['screenshot_URL'] as String,
+      screenshotUrl: (json['screenshot_URL'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$GameToJson(Game instance) => <String, dynamic>{

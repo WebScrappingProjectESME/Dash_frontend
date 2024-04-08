@@ -38,7 +38,7 @@ class _GalleryComponentState extends State<GalleryComponent> {
         child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image(
-              image: Image.network(widget.gameData.screenshotUrl).image,
+              image: Image.network(widget.gameData.screenshotUrl[0]).image,
               width: double.maxFinite,
               fit: BoxFit.fitWidth,
             )
