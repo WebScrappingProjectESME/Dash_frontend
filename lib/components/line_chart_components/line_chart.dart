@@ -68,7 +68,7 @@ class _LineChartSampleState extends State<LineChartSample> {
   // Méthode pour construire un bouton avec un identifiant de data set et un texte
   Widget _buildButton(int dataSet, String text) {
     return SizedBox(
-      width: 100,
+      width: 80,
       height: 34,
       child: TextButton(
         onPressed: () {
