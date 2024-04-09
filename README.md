@@ -27,15 +27,4 @@ It provides valuable breakdown of game details, facilitating informed decision-m
 
 Contributions to SteamDash are welcome!
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-For questions or feedback, contact the development team at steamdash@example.com.
-
 Thank you for using SteamDash!
