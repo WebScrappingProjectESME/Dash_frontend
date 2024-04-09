@@ -7,7 +7,7 @@
       "dlc": 0,
       "in_game_pop": 20000,
       "duration": 90,
-      "reduction": -50,
+      "reduction": -70,
 
       "screenshot_URL": [
         "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
@@ -80,7 +80,7 @@
       "dlc": 6,
       "in_game_pop": 50000,
       "duration": 70,
-      "reduction": -90,
+      "reduction": -50,
 
       "screenshot_URL": [
         "https://cdn.akamai.steamstatic.com/steam/apps/1245620/ss_c97bcad291f4f45d4be4594f34bd78921d961099.600x338.jpg?t=1710261394",
@@ -89,7 +89,6 @@
         "https://cdn.akamai.steamstatic.com/steam/apps/1672970/ss_46ee31494b5d144d5ef6670cb5a1564abbc26fab.600x338.jpg?t=1697014975",
         "https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg?t=1710538394"
       ]
-
     }
   ]
 }
