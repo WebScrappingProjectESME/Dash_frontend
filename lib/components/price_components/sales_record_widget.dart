@@ -23,7 +23,7 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
   Widget build(BuildContext context) {
 
     double price = widget.gameData.price;
-    SalesHisto salesData = widget.gameData.salesHisto.length != 0 ? widget.gameData.salesHisto[widget.index] : SalesHisto(name: "", date: "", reduc: 0);
+    SalesHisto salesData = widget.gameData.salesHisto.isNotEmpty ? widget.gameData.salesHisto[widget.index] : SalesHisto(name: "", date: "", reduc: 0);
 
     return Container(
       width: double.maxFinite,
@@ -50,15 +50,15 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
 
              decoration: BoxDecoration(
                borderRadius: BorderRadius.circular(100),
-               color: salesData.name == "Winter Sales"
+               color: salesData.name == "Winter sales"
                    ? const Color(0xff004862).withAlpha(80)
-                   : salesData.name == "Summer Sales"
+                   : salesData.name == "Summer sales"
                       ? const Color(0xff05bd00).withAlpha(80)
-                      : salesData.name == "Spring Sales"
+                      : salesData.name == "Spring sales"
                         ? const Color(0xffda00d7).withAlpha(80)
-                        : salesData.name == "Fall Sales"
+                        : salesData.name == "Fall sales"
                           ? const Color(0xffd36c00).withAlpha(80)
-                          : salesData.name == "Neo Fest"
+                          : salesData.name == "Neo sest"
                             ? const Color(0xff4e00d3).withAlpha(80)
                             : const Color(0xff444444).withAlpha(80)
              ),
@@ -78,7 +78,7 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
             child: Container(
               alignment: Alignment.center,
               constraints: const BoxConstraints(maxWidth: 100),
-              child: const Text('11th. June', style: TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.bold)),
+              child: Text(salesData.date, style: constTextStyle(color: Color(0xffffffff), fontWeight: FontWeight.bold)),
             ),
           ),
 

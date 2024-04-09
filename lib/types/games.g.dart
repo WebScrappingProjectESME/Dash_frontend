@@ -18,7 +18,7 @@ Game _$GameFromJson(Map<String, dynamic> json) => Game(
           .toList(),
       genres:
           (json['genres'] as List<dynamic>).map((e) => e as String).toList(),
-      review: (json['Review'] as num).toDouble(),
+      review: (json['review'] as num).toDouble(),
       lifeTime: (json['duration'] as num).toDouble(),
       inGamePop: (json['in_game_pop'] as num).toDouble(),
       popHisto: PopHisto.fromJson(json['popHisto'] as Map<String, dynamic>),
@@ -34,7 +34,7 @@ Map<String, dynamic> _$GameToJson(Game instance) => <String, dynamic>{
       'dlc': instance.dlc,
       'categories': instance.categories,
       'genres': instance.genres,
-      'Review': instance.review,
+      'review': instance.review,
       'duration': instance.lifeTime,
       'in_game_pop': instance.inGamePop,
       'popHisto': instance.popHisto.toJson(),
