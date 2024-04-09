@@ -23,7 +23,9 @@ class _PriceComponentState extends State<PriceComponent> {
   @override
   Widget build(BuildContext context) {
 
-    int nbrLines = ((MediaQuery.of(context).size.height / 3) / 45).floor();
+    int nbrOfReduc = widget.gameData.salesHisto.length;
+    int maxNbrLinesPossible = ((MediaQuery.of(context).size.height / 3) / 45).floor();
+    int nbrLines = nbrOfReduc != 0 ? (nbrOfReduc > maxNbrLinesPossible ? maxNbrLinesPossible : nbrOfReduc) : 1;
     List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, auto);
 
     return LayoutComponent(
@@ -41,7 +43,7 @@ class _PriceComponentState extends State<PriceComponent> {
 
         rowGap: 10,
 
-        children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: index,)), // Empty initially
+        children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: index)), // Empty initially
       )
     );
   }

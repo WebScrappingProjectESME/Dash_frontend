@@ -1,5 +1,6 @@
 // lib
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 // types
 import 'package:main_project/types/games.dart';
@@ -36,8 +37,6 @@ class _SideBarState extends State<SideBar> {
     return AnimatedContainer(
       width: isExtended ? 300 : 65,
 
-      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
-
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeOut,
 
@@ -51,28 +50,49 @@ class _SideBarState extends State<SideBar> {
         ),
       ),
 
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-
-          ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); }),
-
-          Column(
-            children: [
-              AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gameData[0].name,appId: 0, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gameData[1].name, appId: 1, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gameData[2].name, appId: 2, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gameData[3].name, appId: 3, onPressedCallback: widget.onButtonSelection),
-              AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gameData[4].name, appId: 4, onPressedCallback: widget.onButtonSelection),
-            ],
-          ),
-
-          ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); })
-        ],
+      child: ElevatedButton(
+        style: const ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(Colors.transparent),
+          overlayColor: MaterialStatePropertyAll(Colors.transparent)
+        ),
+        onPressed: () { extend(); },
+        child: Focus(
+            child: Container(),
+          onFocusChange: (hasFocus){
+              if(hasFocus) {
+                extend();
+              }
+          },
+        ),
       ),
+
+
     );
   }
 }
+
+
+
+// Column(
+// mainAxisAlignment: MainAxisAlignment.spaceBetween,
+// children: [
+//
+//
+//
+// Column(
+// children: [
+// AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gameData.isNotEmpty?widget.gameData[0].name:"",appId: 0, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[1].name:"", appId: 1, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[2].name:"", appId: 2, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[3].name:"", appId: 3, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[4].name:"", appId: 4, onPressedCallback: widget.onButtonSelection),
+// ],
+// ),
+//
+// ExtendButton(isExtended: isExtended, onPressedExtendedButton: () { extend(); })
+// ],
+// ),
+
 
 
 class ExtendButton extends StatelessWidget {
