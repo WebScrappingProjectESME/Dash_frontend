@@ -12,7 +12,7 @@ class LayoutComponentHeader extends StatelessWidget {
   final String text;
   final FontWeight fontWeight;
 
-  const LayoutComponentHeader({super.key,required this.size, required this.icon, required this.iconColor, required this.iconColorBg, required this.text,this.fontWeight = FontWeight.normal});
+  const LayoutComponentHeader({super.key,required this.size, required this.icon, required this.iconColor, required this.iconColorBg, required this.text,this.fontWeight = FontWeight.normal,});
 
   @override
   Widget build(BuildContext context) {
