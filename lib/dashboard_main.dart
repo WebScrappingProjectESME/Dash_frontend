@@ -13,6 +13,7 @@ import 'package:main_project/components/line_chart_components/line_chart_compone
 
 // Types
 import 'package:main_project/types/games.dart';
+import 'package:main_project/types/pop_histo.dart';
 
 // type defs
 typedef IntCallback = void Function(int appId);
@@ -29,15 +30,31 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   List<Game> games = [];
-  Game selectedGame = Game(name: "", review: 0, price: 0,dlc:0,duration: 0, reduction: 0,inGamePop: 0, screenshotUrl: []);
+  Game selectedGame = Game(
+      name: "",
+      price: 0,
+      screenshotUrl: [],
+      dlc:0,
+      categories: [],
+      genres: [],
+      review: 0,
+      lifeTime: 0,
+      inGamePop: 0,
+      popHisto: PopHisto(
+        week: [],
+        month: [],
+        year: []
+      ),
+      salesHisto: []
+  );
 
   Future<void> initialize() async {
 
-    final String response = await rootBundle.loadString('data_files/Data.json');
+    final String response = await rootBundle.loadString('data_files/ListOfGames.json');
     final data = await jsonDecode(response);
 
     setState(() {
-      games = List<Game>.from(data["games"].map((obj) => Game.fromJson(obj)));
+      games = List<Game>.from(data["data"].map((obj) => Game.fromJson(obj)));
       selectedGame = games[0];
     });
   }

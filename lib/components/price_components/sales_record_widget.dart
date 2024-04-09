@@ -4,6 +4,7 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 // Types
 import 'package:main_project/types/games.dart';
+import 'package:main_project/types/sales_histo.dart';
 
 
 class SalesRecordWidget extends StatefulWidget {
@@ -18,10 +19,11 @@ class SalesRecordWidget extends StatefulWidget {
 
 class _SalesRecordWidgetState extends State<SalesRecordWidget> {
 
-  final String salesName = "Winter Sales";
-
   @override
   Widget build(BuildContext context) {
+
+    double price = widget.gameData.price;
+    SalesHisto salesData = widget.gameData.salesHisto.length != 0 ? widget.gameData.salesHisto[widget.index] : SalesHisto(name: "", date: "", reduc: 0);
 
     return Container(
       width: double.maxFinite,
@@ -48,21 +50,21 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
 
              decoration: BoxDecoration(
                borderRadius: BorderRadius.circular(100),
-               color: salesName == "Winter Sales"
+               color: salesData.name == "Winter Sales"
                    ? const Color(0xff004862).withAlpha(80)
-                   : salesName == "Summer Sales"
+                   : salesData.name == "Summer Sales"
                       ? const Color(0xff05bd00).withAlpha(80)
-                      : salesName == "Spring Sales"
+                      : salesData.name == "Spring Sales"
                         ? const Color(0xffda00d7).withAlpha(80)
-                        : salesName == "Fall Sales"
+                        : salesData.name == "Fall Sales"
                           ? const Color(0xffd36c00).withAlpha(80)
-                          : salesName == "Neo Fest"
+                          : salesData.name == "Neo Fest"
                             ? const Color(0xff4e00d3).withAlpha(80)
                             : const Color(0xff444444).withAlpha(80)
              ),
 
              child: Text(
-                 salesName,
+                 salesData.name,
                  overflow: TextOverflow.ellipsis,
                  style: const TextStyle(
                    color: Colors.white,
@@ -98,7 +100,7 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
                    Align(
                      alignment: Alignment.centerRight,
                      child: Text(
-                       "${(widget.gameData.price * (1 + (widget.gameData.reduction/100))).toStringAsFixed(2)} €",
+                       "${(widget.gameData.price * (1 + (salesData.reduc/100))).toStringAsFixed(2)} €",
                        style: const TextStyle(
                          color: Colors.white,
                          fontSize: 18
@@ -113,20 +115,20 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
 
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(100),
-                         color: widget.gameData.reduction > -30
+                         color: salesData.reduc > -30
                              ? const Color(0xff770000).withAlpha(80)
-                             : widget.gameData.reduction > -60
+                             : salesData.reduc > -60
                                 ? const Color(0xff770000).withAlpha(80)
                                 : const Color(0xff006200).withAlpha(80),
                        ),
 
                        child: Text(
-                         "${widget.gameData.reduction.toString()}%",
+                         "${salesData.reduc.toString()}%",
                          style: TextStyle(
                            fontSize: 18,
-                           color: widget.gameData.reduction > -30
+                           color: salesData.reduc > -30
                                ? Colors.redAccent
-                               : widget.gameData.reduction > -60
+                               : salesData.reduc > -60
                                   ? Colors.orangeAccent
                                   : Colors.greenAccent[400]
                          ),

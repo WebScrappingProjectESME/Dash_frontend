@@ -38,7 +38,7 @@ class TimeLenWidget extends StatelessWidget {
             children: [
 
               Text(
-                  gameData.duration.toString(),
+                  gameData.lifeTime.toString(),
                   style:  const TextStyle(
                     height: double.minPositive,
                     color: Colors.white,
