@@ -1,14 +1,14 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class LineChartSample2 extends StatefulWidget {
-  const LineChartSample2({super.key});
+class LineChartSample extends StatefulWidget {
+  const LineChartSample({super.key});
 
   @override
-  State<LineChartSample2> createState() => _LineChartSample2State();
+  State<LineChartSample> createState() => _LineChartSampleState();
 }
 
-class _LineChartSample2State extends State<LineChartSample2> {
+class _LineChartSampleState extends State<LineChartSample> {
   List<Color> gradientColors = [
     const Color(0xff00E676),
     const Color(0xff006200),
@@ -105,6 +105,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 16,
+      color: Colors.grey,
     );
     Widget text;
     switch (value.toInt()) {
@@ -132,6 +133,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 16,
+      color: Colors.grey,
     );
     Widget text;
     switch (value.toInt()) {
@@ -159,6 +161,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 16,
+      color: Colors.grey,
     );
     Widget text;
     switch (value.toInt()) {
@@ -186,6 +189,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 15,
+      color: Colors.grey,
     );
     String text;
     switch (value.toInt()) {
@@ -209,6 +213,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 15,
+      color: Colors.grey,
     );
     String text;
     switch (value.toInt()) {
@@ -232,6 +237,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 15,
+      color: Colors.grey,
     );
     String text;
     switch (value.toInt()) {
@@ -404,7 +410,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
             FlSpot(0, 3),
             FlSpot(1, 2),
             FlSpot(2, 5),
-            FlSpot(3, 3.1),
+            FlSpot(3, 3),
             FlSpot(4, 4),
             FlSpot(5, 3),
             FlSpot(6, 4),

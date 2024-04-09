@@ -29,7 +29,7 @@ class _LineChartComponentState extends State<LineChartComponent> {
         iconColorBg: const Color(0xff81007c).withAlpha(80),
       ),
 
-      child: const LineChartSample2()
+      child: const LineChartSample()
     );
   }
 }
