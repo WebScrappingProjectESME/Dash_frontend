@@ -20,12 +20,11 @@ class PriceComponent extends StatefulWidget {
 }
 
 class _PriceComponentState extends State<PriceComponent> {
-
   @override
   Widget build(BuildContext context) {
 
-    List<IntrinsicContentTrackSize> rowSizes = List.filled(7, auto);
-
+    int nbrLines = ((MediaQuery.of(context).size.height / 3) / 45).floor();
+    List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, auto);
 
     return LayoutComponent(
       header: LayoutComponentHeader(
@@ -42,7 +41,7 @@ class _PriceComponentState extends State<PriceComponent> {
 
         rowGap: 10,
 
-        children: List<Widget>.generate(7, (int index) => SalesRecordWidget(gameData: widget.gameData, index: index,)), // Empty initially
+        children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: index,)), // Empty initially
       )
     );
   }
