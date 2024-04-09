@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 // Dart pages files
-import 'package:main_project/Components/price_components/price_component.dart';
+import 'package:main_project/Components/price_components/sales_component.dart';
 import 'package:main_project/Components/sidebar_components/sidebar_menu.dart';
 import 'package:main_project/components/gallery_components/gallery_main.dart';
 import 'package:main_project/components/general_infos_components/info_component.dart';
