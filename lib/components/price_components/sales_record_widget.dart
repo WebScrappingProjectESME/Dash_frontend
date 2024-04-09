@@ -78,7 +78,7 @@ class _SalesRecordWidgetState extends State<SalesRecordWidget> {
             child: Container(
               alignment: Alignment.center,
               constraints: const BoxConstraints(maxWidth: 100),
-              child: Text(salesData.date, style: const TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.bold)),
+              child: Text(salesData.date, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.bold)),
             ),
           ),
 
