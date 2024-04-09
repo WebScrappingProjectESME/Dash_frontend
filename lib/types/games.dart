@@ -19,8 +19,6 @@ class Game{
   final double dlc;
   final List<String> categories;
   final List<String> genres;
-
-  @JsonKey(name: "Review")
   final double review;
 
   @JsonKey(name: "duration")
