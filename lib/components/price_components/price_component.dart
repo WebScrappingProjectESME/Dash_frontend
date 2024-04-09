@@ -1,12 +1,11 @@
 // libs
-import 'dart:core';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 //pages
 import 'package:main_project/components/layout_component.dart ';
-import 'package:main_project/components/price_components/layout_header_price_component.dart';
-import 'package:main_project/components/price_components/price_widget.dart';
+import 'package:main_project/components/layout_component_header.dart';
+import 'package:main_project/components/price_components/sales_record_widget.dart';
 
 // types
 import 'package:main_project/types/games.dart';
@@ -24,21 +23,26 @@ class _PriceComponentState extends State<PriceComponent> {
 
   @override
   Widget build(BuildContext context) {
-    //readJson();
-    return LayoutComponent(
-      header: const LayoutHeaderPriceComponent(),
 
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        //padding: const EdgeInsets.all(5.0),
-        children: [
-          SaleshRecordWidget(gameData: widget.gameData),
-          SaleshRecordWidget(gameData: widget.gameData),
-          SaleshRecordWidget(gameData: widget.gameData),
-          SaleshRecordWidget(gameData: widget.gameData),
-          SaleshRecordWidget(gameData: widget.gameData),
-        ], // Empty initially
+    List<IntrinsicContentTrackSize> rowSizes = List.filled(7, auto);
+
+
+    return LayoutComponent(
+      header: LayoutComponentHeader(
+        size: 40,
+        icon: Icons.bar_chart,
+        iconColor: Colors.orangeAccent,
+        iconColorBg: const Color(0xfff07800).withAlpha(80),
+        text: "Sales Record",
+      ),
+
+      child: LayoutGrid(
+        rowSizes: rowSizes,
+        columnSizes: [1.fr],
+
+        rowGap: 10,
+
+        children: List<Widget>.generate(7, (int index) => SalesRecordWidget(gameData: widget.gameData, index: index,)), // Empty initially
       )
     );
   }
