@@ -52,7 +52,7 @@ class PopulationWidget extends StatelessWidget {
                 ),
 
                 child: Text(
-                  population>0 ? "+$population% in 24h" : "$population% in 24h",
+                  population>0 ? "+$population%" : "$population%",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
