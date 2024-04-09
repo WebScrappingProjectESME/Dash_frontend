@@ -53,16 +53,37 @@ class _SideBarState extends State<SideBar> {
       child: ElevatedButton(
         style: const ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(Colors.transparent),
-          overlayColor: MaterialStatePropertyAll(Colors.transparent)
+          overlayColor: MaterialStatePropertyAll(Colors.transparent),
+
         ),
         onPressed: () { extend(); },
-        child: Focus(
-            child: Container(),
-          onFocusChange: (hasFocus){
-              if(hasFocus) {
-                extend();
-              }
-          },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40),
+          child: LayoutGrid(
+            columnSizes: [1.fr],
+            rowSizes: [auto, 1.fr],
+
+            rowGap: 40,
+
+            children: [
+              Container(
+                color: Colors.red,
+
+              ),
+
+              // MAXIME PART !!!
+              LayoutGrid(
+                columnSizes: [1.fr],
+                rowSizes: [1.fr],
+
+                children: [
+                  Container(
+                    color: Colors.red,
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
 
