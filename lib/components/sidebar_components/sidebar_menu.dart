@@ -11,10 +11,9 @@ typedef IntCallback = void Function(int appId);
 
 class SideBar extends StatefulWidget {
   final IntCallback onButtonSelection;
-  //final Game gameData;
-  List<Game> gameData;
+  final List<Game> gameData;
 
-  SideBar({super.key, required this.onButtonSelection, required this.gameData});
+  const SideBar({super.key, required this.onButtonSelection, required this.gameData});
 
   @override
   State<SideBar> createState() => _SideBarState();
