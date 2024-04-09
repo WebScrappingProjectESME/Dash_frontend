@@ -43,7 +43,7 @@ class _PriceComponentState extends State<PriceComponent> {
 
         rowGap: 10,
 
-        children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: index)), // Empty initially
+        children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: nbrOfReduc - index - 1)), // Empty initially
       )
     );
   }
