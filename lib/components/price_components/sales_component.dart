@@ -8,10 +8,10 @@ import 'package:main_project/components/layout_component_header.dart';
 import 'package:main_project/components/price_components/sales_record_widget.dart';
 
 // types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 class PriceComponent extends StatefulWidget {
-  final Game gameData;
+  final GameData gameData;
 
   const PriceComponent({super.key, required this.gameData});
 

@@ -2,11 +2,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 // types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 import 'package:main_project/types/pop_histo.dart';
 
 class LineChartSample extends StatefulWidget {
-  final Game gameData;
+  final GameData gameData;
 
   const LineChartSample({super.key, required this.gameData});
 

@@ -1,6 +1,6 @@
 //Libs
 import 'package:flutter/material.dart';
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 // Pages
 import 'package:main_project/components/layout_component.dart ';
@@ -12,7 +12,7 @@ import 'score_gauge.dart';
 // Code
 
 class ReviewWidget extends StatelessWidget {
-  final Game gameData;
+  final GameData gameData;
 
   const ReviewWidget({super.key,required this.gameData});
 

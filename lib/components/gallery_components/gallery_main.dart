@@ -7,14 +7,14 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 
 // Type
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 
 
 // Code
 
 class GalleryComponent extends StatefulWidget {
-  final Game gameData;
+  final GameData gameData;
 
   const GalleryComponent({super.key, required this.gameData});
 
