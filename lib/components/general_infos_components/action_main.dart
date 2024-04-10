@@ -40,24 +40,14 @@ class ActionWidget extends StatelessWidget {
           text: "Next Action",
         ),
 
-        child: LayoutGrid(
-          columnSizes: [1.fr, 1.fr, 1.fr],
-          rowSizes: const [auto],
-
-          columnGap: 10,
-
-          children: [
-            ElevatedButton(
-              style: ButtonStyle(
-
-              ),
-
-              onPressed: () {
-                _launchURL('https://store.steampowered.com/app/$gameId');
-              },
-              child: Text('Buy'),
-            ),
-          ],
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: ElevatedButton(
+            onPressed: () {
+              _launchURL('https://store.steampowered.com/app/$gameId');
+            },
+            child: Text('Buy'),
+          ),
         )
     );
   }
