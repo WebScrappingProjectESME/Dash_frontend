@@ -6,11 +6,13 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 import 'package:main_project/components/line_chart_components/line_chart.dart';
 
+// types
+import 'package:main_project/types/games.dart';
 
 class LineChartComponent extends StatefulWidget {
+  final Game gameData;
 
-
-  const LineChartComponent({super.key});
+  const LineChartComponent({super.key, required this.gameData});
 
   @override
   State<LineChartComponent> createState() => _LineChartComponentState();
@@ -29,7 +31,7 @@ class _LineChartComponentState extends State<LineChartComponent> {
         iconColorBg: const Color(0xff81007c).withAlpha(80),
       ),
 
-      child: const LineChartSample()
+      child: const LineChartSample(gameData: widget.gameData)
     );
   }
 }
