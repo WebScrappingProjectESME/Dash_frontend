@@ -26,7 +26,7 @@ class _PriceComponentState extends State<PriceComponent> {
     int nbrOfReduc = widget.gameData.salesHisto.length;
     int maxNbrLinesPossible = ((MediaQuery.of(context).size.height / 3) / 45).floor();
     int nbrLines = nbrOfReduc != 0 ? (nbrOfReduc > maxNbrLinesPossible ? maxNbrLinesPossible : nbrOfReduc) : 1;
-    List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, auto);
+    List<IntrinsicContentTrackSize> rowSizes = List.filled(maxNbrLinesPossible, auto);
 
     return LayoutComponent(
       header: LayoutComponentHeader(
@@ -38,7 +38,7 @@ class _PriceComponentState extends State<PriceComponent> {
       ),
 
       child: LayoutGrid(
-        rowSizes: rowSizes,
+        rowSizes: List.filled(maxNbrLinesPossible, auto),
         columnSizes: [1.fr],
 
         rowGap: 10,

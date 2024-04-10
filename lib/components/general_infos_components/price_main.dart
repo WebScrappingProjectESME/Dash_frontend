@@ -38,7 +38,7 @@ class PriceWidget extends StatelessWidget {
             children: [
 
               Text(
-                gameData.price.toString(),
+                gameData.price<0 ? "Gratuit" : gameData.price.toString(),
                 style: const TextStyle(
                     height: double.minPositive,
                     color: Colors.white,
@@ -49,9 +49,9 @@ class PriceWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: spaceBetweenValueUnity),
 
-                child: const Text(
-                  "€",
-                  style: TextStyle(
+                child: Text(
+                  gameData.price<0 ? "" : "€",
+                  style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 25
                   ),
