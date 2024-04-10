@@ -16,10 +16,10 @@ typedef IntCallback = void Function(int appId);
 
 class SideBar extends StatefulWidget {
   final IntCallback onGameSelection;
-  final List<Game> gameData;
+  final List<Game> gamesData;
 
   const SideBar(
-      {super.key, required this.onGameSelection, required this.gameData});
+      {super.key, required this.onGameSelection, required this.gamesData});
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -37,13 +37,13 @@ class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
     List<String> nameOptions =
-        widget.gameData.map((game) => game.name.toLowerCase()).toList();
+        widget.gamesData.map((game) => game.name.toLowerCase()).toList();
     double maxWidth = isExtended ? 300 : 70;
 
-    // int nbrOfTitles = widget.gameData.name.length;
-    // int maxNbrLinesPossible = ((MediaQuery.of(context).size.height / 3) / 45).floor();
-    // int nbrLines = nbrOfTitles != 0 ? (nbrOfTitles > maxNbrLinesPossible ? maxNbrLinesPossible : nbrOfTitles) : 1;
-    // List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, auto);
+    int nbrOfGames = widget.gamesData.length;
+    int maxNbrLinesPossible = ((MediaQuery.of(context).size.height) /80).floor();
+    int nbrLines = nbrOfGames != 0 ? (nbrOfGames > maxNbrLinesPossible ? maxNbrLinesPossible : nbrOfGames) : 1;
+    //List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, 1.fr);
 
     return AnimatedContainer(
       width: maxWidth,
@@ -73,7 +73,7 @@ class _SideBarState extends State<SideBar> {
             columnSizes: [1.fr],
             rowSizes: [auto, 1.fr],
 
-            rowGap: 40,
+            rowGap: 100,
 
             children: [
               if (isExtended)
@@ -107,10 +107,10 @@ class _SideBarState extends State<SideBar> {
               // MAXIME PART !!!
               LayoutGrid(
                 columnSizes: [1.fr],
-                rowSizes: [1.fr],
+                rowSizes: List.filled(nbrLines, 1.fr),
                 rowGap: 10,
 
-                children: List<Widget>.generate(9, (int index) => SalesRecordWidget(gameData: widget.gameData.isNotEmpty?widget.gameData[1].name, index: 4 - index - 1)), // Empty initially
+                children: List<Widget>.generate(nbrLines, (int index) => AnimatedIconButton(isExtended: isExtended,icon: Icons.add,color: Colors.black,data: widget.gamesData.isNotEmpty?widget.gamesData[index].name: "", appId: index, onPressedCallback: widget.onGameSelection)), // Empty initially
               )
             ],
           ),
@@ -128,11 +128,11 @@ class _SideBarState extends State<SideBar> {
 //
 // Column(
 // children: [
-// AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gameData.isNotEmpty?widget.gameData[0].name:"",appId: 0, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[1].name:"", appId: 1, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[2].name:"", appId: 2, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[3].name:"", appId: 3, onPressedCallback: widget.onButtonSelection),
-// AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gameData.isNotEmpty?widget.gameData[4].name:"", appId: 4, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended,icon: Icons.search,color: Colors.black,data: widget.gamesData.isNotEmpty?widget.gamesData[0].name:"",appId: 0, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.home_filled, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[1].name:"", appId: 1, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.gamepad, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[2].name:"", appId: 2, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.videogame_asset, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[3].name:"", appId: 3, onPressedCallback: widget.onButtonSelection),
+// AnimatedIconButton(isExtended: isExtended, icon: Icons.swap_calls_outlined, color: Colors.black, data: widget.gamesData.isNotEmpty?widget.gamesData[4].name:"", appId: 4, onPressedCallback: widget.onButtonSelection),
 // ],
 // ),
 //
