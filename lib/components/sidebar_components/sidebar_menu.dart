@@ -102,8 +102,13 @@ class _SideBarState extends State<SideBar> {
                 columnSizes: [1.fr],
                 rowSizes: [1.fr],
                 children: [
-                  Container(
-                    //color: Colors.red,
+                  LayoutGrid(
+                    rowSizes: rowSizes,
+                    columnSizes: [1.fr],
+
+                    rowGap: 10,
+
+                    children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: nbrOfReduc - index - 1)), // Empty initially
                   )
                 ],
               )
