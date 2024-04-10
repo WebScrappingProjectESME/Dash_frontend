@@ -6,14 +6,13 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 
 // Types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 
 // Codes
 
 class PopulationWidget extends StatelessWidget {
-  final Game gameData;
-  final double population = 25.2;
+  final GameData gameData;
 
   const PopulationWidget({super.key, required this.gameData});
 
@@ -47,16 +46,16 @@ class PopulationWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
 
                 decoration: BoxDecoration(
-                    color: population>0 ? const Color(0xff006200).withAlpha(80) : const Color(0xff770000).withAlpha(80),
+                    color: gameData.popHisto.growth>0 ? const Color(0xff006200).withAlpha(80) : const Color(0xff770000).withAlpha(80),
                     borderRadius: BorderRadius.circular(100)
                 ),
 
                 child: Text(
-                  population>0 ? "+$population%" : "$population%",
+                  gameData.popHisto.growth>0 ? "+${gameData.popHisto.growth}%" : "${gameData.popHisto.growth}%",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      color: population>0 ? Colors.greenAccent[400] : Colors.redAccent,
+                      color: gameData.popHisto.growth>0 ? Colors.greenAccent[400] : Colors.redAccent,
                       fontSize: 15
                   ),
                 ),

@@ -6,14 +6,14 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 
 // Types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 
 
 // Codes
 
 class PriceWidget extends StatelessWidget {
-  final Game gameData;
+  final GameData gameData;
   final double spaceBetweenValueUnity;
 
   const PriceWidget({super.key, required this.gameData, required this.spaceBetweenValueUnity});

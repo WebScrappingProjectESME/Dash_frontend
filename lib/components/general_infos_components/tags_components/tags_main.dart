@@ -6,7 +6,7 @@ import 'package:main_project/components/layout_component.dart ';
 import 'package:main_project/components/layout_component_header.dart';
 
 // Types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 
 

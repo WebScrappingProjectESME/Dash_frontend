@@ -7,10 +7,10 @@ import 'package:main_project/components/layout_component_header.dart';
 import 'package:main_project/components/line_chart_components/line_chart.dart';
 
 // types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 class LineChartComponent extends StatefulWidget {
-  final Game gameData;
+  final GameData gameData;
 
   const LineChartComponent({super.key, required this.gameData});
 

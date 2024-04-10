@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 // Types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 import 'package:main_project/types/sales_histo.dart';
 
 
 class SalesRecordWidget extends StatefulWidget {
-  final Game gameData;
+  final GameData gameData;
   final int index;
 
   const SalesRecordWidget({super.key,required this.gameData, required this.index});

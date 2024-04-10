@@ -9,14 +9,14 @@ import 'package:main_project/components/sidebar_components/autocomplet_component
 import 'package:main_project/components/price_components/sales_record_widget.dart';
 
 // types
-import 'package:main_project/types/games.dart';
+import 'package:main_project/types/games_data.dart';
 
 // types def
 typedef IntCallback = void Function(int appId);
 
 class SideBar extends StatefulWidget {
   final IntCallback onGameSelection;
-  final List<Game> gamesData;
+  final List<GameData> gamesData;
 
   const SideBar(
       {super.key, required this.onGameSelection, required this.gamesData});
@@ -36,8 +36,7 @@ class _SideBarState extends State<SideBar> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> nameOptions =
-        widget.gamesData.map((game) => game.name.toLowerCase()).toList();
+    List<String> nameOptions = widget.gamesData.map((game) => game.name.toLowerCase()).toList();
     double maxWidth = isExtended ? 300 : 70;
 
     int nbrOfGames = widget.gamesData.length;

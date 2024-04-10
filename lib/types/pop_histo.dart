@@ -8,11 +8,13 @@ class PopHisto{
   final List<int> week;
   final List<int> month;
   final List<int> year;
+  final double growth;
 
   PopHisto({
     required this.week,
     required this.month,
     required this.year,
+    required this.growth
   });
 
   factory PopHisto.fromJson(Map<String, dynamic> json) => _$PopHistoFromJson(json);
