@@ -48,18 +48,6 @@ class _LineChartSampleState extends State<LineChartSample> {
       return FlSpot(index.toDouble(), value.toDouble());
     }).toList();
 
-    setState() {
-      switch (selectedDataSet) {
-        case 1:
-          return dataSet = weekFlSpots;
-        case 2:
-          return dataSet = monthFlSpots;
-        case 3:
-          return dataSet = yearFlSpots;
-        default:
-          return dataSet = weekFlSpots;
-      }
-    };
 
     return Stack(
       children: [
@@ -129,6 +117,19 @@ class _LineChartSampleState extends State<LineChartSample> {
       ),
     );
   }
+
+  setState() {
+    switch (selectedDataSet) {
+      case 1:
+        return dataSet = weekFlSpots;
+      case 2:
+        return dataSet = monthFlSpots;
+      case 3:
+        return dataSet = yearFlSpots;
+      default:
+        return dataSet = weekFlSpots;
+    }
+  };
 
   // Méthode pour récupérer les données en fonction du data set sélectionné
   LineChartData _getSelectedData() {
