@@ -1,8 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+// types
+import 'package:main_project/types/games.dart';
+
 class LineChartSample extends StatefulWidget {
-  const LineChartSample({super.key});
+  final Game gameData;
+
+  const LineChartSample({super.key, required this.gameData});
 
   @override
   State<LineChartSample> createState() => _LineChartSampleState();
@@ -174,6 +179,8 @@ class _LineChartSampleState extends State<LineChartSample> {
       case 8:
         text = const Text('SEP', style: style);
         break;
+      case 12:
+        text = const Text('', style: style);
       default:
         text = const Text('', style: style);
         break;
