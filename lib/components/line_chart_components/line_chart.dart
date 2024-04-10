@@ -20,6 +20,11 @@ class _LineChartSampleState extends State<LineChartSample> {
     const Color(0xff006200),
   ];
 
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   int selectedDataSet = 1; // Variable pour suivre le dataset sélectionné
   List<FlSpot> dataSet = [];
 
@@ -30,24 +35,44 @@ class _LineChartSampleState extends State<LineChartSample> {
     List<int> monthPopulation = widget.gameData.popHisto.month;
     List<int> yearPopulation = widget.gameData.popHisto.year;
 
+    int maxWeek = weekPopulation.reduce((currentMax, next) => currentMax > next ? currentMax : next);
+    int maxMonth = monthPopulation.reduce((currentMax, next) => currentMax > next ? currentMax : next);
+    int maxYear = yearPopulation.reduce((currentMax, next) => currentMax > next ? currentMax : next);
+
+    int minWeek = weekPopulation.reduce((currentMin, next) => currentMin < next ? currentMin : next);
+    int minMonth = monthPopulation.reduce((currentMin, next) => currentMin < next ? currentMin : next);
+    int minYear = yearPopulation.reduce((currentMin, next) => currentMin < next ? currentMin : next);
+
     List<FlSpot> weekFlSpots = weekPopulation.asMap().entries.map((entry) {
       int index = entry.key;
       int value = entry.value;
-      return FlSpot(index.toDouble(), value.toDouble());
+      return FlSpot(index.toDouble(), ((value.toDouble()-minWeek)*5)/(maxWeek-minWeek));
     }).toList();
 
     List<FlSpot> monthFlSpots = monthPopulation.asMap().entries.map((entry) {
       int index = entry.key;
       int value = entry.value;
-      return FlSpot(index.toDouble(), value.toDouble());
+      return FlSpot(index.toDouble(), ((value.toDouble()-minMonth)*5)/(maxMonth-minMonth));
     }).toList();
 
     List<FlSpot> yearFlSpots = yearPopulation.asMap().entries.map((entry) {
       int index = entry.key;
       int value = entry.value;
-      return FlSpot(index.toDouble(), value.toDouble());
+      return FlSpot(index.toDouble(), ((value.toDouble()-minYear)*5)/(maxYear-minYear));
     }).toList();
 
+    setState(() {
+      switch (selectedDataSet) {
+        case 1:
+          dataSet = weekFlSpots;
+        case 2:
+          dataSet = monthFlSpots;
+        case 3:
+          dataSet = yearFlSpots;
+        default:
+          dataSet = weekFlSpots;
+      }
+    });
 
     return Stack(
       children: [
@@ -118,18 +143,6 @@ class _LineChartSampleState extends State<LineChartSample> {
     );
   }
 
-  setState() {
-    switch (selectedDataSet) {
-      case 1:
-        return dataSet = weekFlSpots;
-      case 2:
-        return dataSet = monthFlSpots;
-      case 3:
-        return dataSet = yearFlSpots;
-      default:
-        return dataSet = weekFlSpots;
-    }
-  };
 
   // Méthode pour récupérer les données en fonction du data set sélectionné
   LineChartData _getSelectedData() {
@@ -153,14 +166,23 @@ class _LineChartSampleState extends State<LineChartSample> {
     );
     Widget text;
     switch (value.toInt()) {
-      case 2:
-        text = const Text('MON', style: style);
+      case 0:
+        text = const Text('04/04', style: style);
         break;
-      case 5:
-        text = const Text('TUE', style: style);
+      case 2:
+        text = const Text('04/05', style: style);
+        break;
+      case 4:
+        text = const Text('04/06', style: style);
+        break;
+      case 6:
+        text = const Text('04/07', style: style);
         break;
       case 8:
-        text = const Text('WED', style: style);
+        text = const Text('04/08', style: style);
+        break;
+      case 10:
+        text = const Text('04/09', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -181,14 +203,23 @@ class _LineChartSampleState extends State<LineChartSample> {
     );
     Widget text;
     switch (value.toInt()) {
-      case 2:
-        text = const Text('WEEK1', style: style);
+      case 0:
+        text = const Text('03/25', style: style);
         break;
-      case 5:
-        text = const Text('WEEK2', style: style);
+      case 2:
+        text = const Text('03/28', style: style);
+        break;
+      case 4:
+        text = const Text('03/31', style: style);
+        break;
+      case 6:
+        text = const Text('04/02', style: style);
         break;
       case 8:
-        text = const Text('WEEK3', style: style);
+        text = const Text('04/05', style: style);
+        break;
+      case 10:
+        text = const Text('04/08', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -209,17 +240,24 @@ class _LineChartSampleState extends State<LineChartSample> {
     );
     Widget text;
     switch (value.toInt()) {
+      case 0:
+        text = const Text('APR', style: style);
+        break;
       case 2:
-        text = const Text('MAR', style: style);
+        text = const Text('JUL', style: style);
         break;
-      case 5:
-        text = const Text('JUN', style: style);
-        break;
-      case 8:
+      case 4:
         text = const Text('SEP', style: style);
         break;
-      case 12:
-        text = const Text('', style: style);
+      case 6:
+        text = const Text('NOV', style: style);
+        break;
+      case 8:
+        text = const Text('JAN', style: style);
+        break;
+      case 10:
+        text = const Text('MAR', style: style);
+        break;
       default:
         text = const Text('', style: style);
         break;
@@ -354,7 +392,7 @@ class _LineChartSampleState extends State<LineChartSample> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: 12,
+      maxX: 11,
       minY: 0,
       maxY: 6,
       lineBarsData: [
@@ -433,7 +471,7 @@ class _LineChartSampleState extends State<LineChartSample> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: 12,
+      maxX: 11,
       minY: 0,
       maxY: 6,
       lineBarsData: [
@@ -512,7 +550,7 @@ class _LineChartSampleState extends State<LineChartSample> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: 12,
+      maxX: 11,
       minY: 0,
       maxY: 6,
       lineBarsData: [

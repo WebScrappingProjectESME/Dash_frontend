@@ -100,6 +100,7 @@ class _DashboardState extends State<Dashboard> {
         children: [
 
           SideBar(gamesData: games,onGameSelection: (int newId) { updateGame(newId); }).inGridArea("nav"),
+          SideBar(gamesData: games,onGameSelection: (int newId) { updateGame(newId); }).inGridArea("nav"),
 
           LayoutGrid(
 
