@@ -36,8 +36,6 @@ class _InfoComponentState extends State<InfoComponent> {
   @override
   Widget build(BuildContext context) {
 
-    print(widget.gameId);
-
     return LayoutGrid(
 
       areas:
