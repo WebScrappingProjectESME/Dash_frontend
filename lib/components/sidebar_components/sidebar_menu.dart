@@ -1,10 +1,12 @@
 // lib
 import 'dart:math';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+
+// Pages
 import 'package:main_project/components/sidebar_components/autocomplet_component.dart';
+import 'package:main_project/components/price_components/sales_record_widget.dart';
 
 // types
 import 'package:main_project/types/games.dart';
@@ -14,10 +16,10 @@ typedef IntCallback = void Function(int appId);
 
 class SideBar extends StatefulWidget {
   final IntCallback onGameSelection;
-  final List<Game> gamesData;
+  final List<Game> gameData;
 
   const SideBar(
-      {super.key, required this.onGameSelection, required this.gamesData});
+      {super.key, required this.onGameSelection, required this.gameData});
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -35,8 +37,13 @@ class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
     List<String> nameOptions =
-        widget.gamesData.map((game) => game.name.toLowerCase()).toList();
+        widget.gameData.map((game) => game.name.toLowerCase()).toList();
     double maxWidth = isExtended ? 300 : 70;
+
+    // int nbrOfTitles = widget.gameData.name.length;
+    // int maxNbrLinesPossible = ((MediaQuery.of(context).size.height / 3) / 45).floor();
+    // int nbrLines = nbrOfTitles != 0 ? (nbrOfTitles > maxNbrLinesPossible ? maxNbrLinesPossible : nbrOfTitles) : 1;
+    // List<IntrinsicContentTrackSize> rowSizes = List.filled(nbrLines, auto);
 
     return AnimatedContainer(
       width: maxWidth,
@@ -101,16 +108,9 @@ class _SideBarState extends State<SideBar> {
               LayoutGrid(
                 columnSizes: [1.fr],
                 rowSizes: [1.fr],
-                children: [
-                  LayoutGrid(
-                    rowSizes: rowSizes,
-                    columnSizes: [1.fr],
+                rowGap: 10,
 
-                    rowGap: 10,
-
-                    children: List<Widget>.generate(nbrLines, (int index) => SalesRecordWidget(gameData: widget.gameData, index: nbrOfReduc - index - 1)), // Empty initially
-                  )
-                ],
+                children: List<Widget>.generate(9, (int index) => SalesRecordWidget(gameData: widget.gameData.isNotEmpty?widget.gameData[1].name, index: 4 - index - 1)), // Empty initially
               )
             ],
           ),
