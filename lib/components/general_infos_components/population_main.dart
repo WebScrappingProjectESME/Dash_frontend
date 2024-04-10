@@ -14,6 +14,8 @@ import 'package:main_project/types/games_data.dart';
 class PopulationWidget extends StatelessWidget {
   final GameData gameData;
 
+  final double population = -25;
+
   const PopulationWidget({super.key, required this.gameData});
 
   @override
@@ -46,7 +48,7 @@ class PopulationWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
 
                 decoration: BoxDecoration(
-                    color: gameData.popHisto.growth>0 ? const Color(0xff006200).withAlpha(80) : const Color(0xff770000).withAlpha(80),
+                    color: gameData.popHisto.growth>0 ? const Color(0xff006200).withAlpha(80) : gameData.popHisto.growth == 0 ? const Color(0xff424242).withAlpha(80) : const Color(0xff770000).withAlpha(80),
                     borderRadius: BorderRadius.circular(100)
                 ),
 
@@ -55,7 +57,7 @@ class PopulationWidget extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      color: gameData.popHisto.growth>0 ? Colors.greenAccent[400] : Colors.redAccent,
+                      color: gameData.popHisto.growth>0 ? Colors.greenAccent[400] : gameData.popHisto.growth == 0 ? Colors.grey : Colors.redAccent,
                       fontSize: 15
                   ),
                 ),

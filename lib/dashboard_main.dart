@@ -79,8 +79,6 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
 
-    print(gamesIds[selectedGame.name.toLowerCase()]);
-
     return Material(
       color: const Color(0xff171717),
 
@@ -129,7 +127,7 @@ class _DashboardState extends State<Dashboard> {
             children: [
               GalleryComponent(gameData: selectedGame).inGridArea("image"),
 
-              InfoComponent(gameData: selectedGame,gameId: (selectedGame.name != "" ? gamesIds[selectedGame.name.toLowerCase()] : 0)).inGridArea("general"),
+              InfoComponent(gameData: selectedGame,gameId: (selectedGame.name != "" ? (gamesIds[selectedGame.name.toLowerCase()] ?? 0 ): 0)).inGridArea("general"),
 
               LineChartComponent(gameData: selectedGame).inGridArea("population"),
 
