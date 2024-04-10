@@ -124,7 +124,7 @@ class _DashboardState extends State<Dashboard> {
 
               InfoComponent(gameData: selectedGame).inGridArea("general"),
 
-              const LineChartComponent().inGridArea("population"),
+              LineChartComponent(gameData: selectedGame).inGridArea("population"),
 
               PriceComponent(gameData: selectedGame).inGridArea("reduction"), // History Widget
             ],
