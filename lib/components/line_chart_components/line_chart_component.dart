@@ -22,6 +22,7 @@ class _LineChartComponentState extends State<LineChartComponent> {
 
   @override
   Widget build(BuildContext context) {
+
     return LayoutComponent(
       header: LayoutComponentHeader(
         size: 40,
@@ -31,7 +32,7 @@ class _LineChartComponentState extends State<LineChartComponent> {
         iconColorBg: const Color(0xff81007c).withAlpha(80),
       ),
 
-      child: const LineChartSample(gameData: widget.gameData)
+      child: LineChartSample(gameData: widget.gameData)
     );
   }
 }

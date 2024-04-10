@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // types
 import 'package:main_project/types/games.dart';
+import 'package:main_project/types/pop_histo.dart';
 
 class LineChartSample extends StatefulWidget {
   final Game gameData;
@@ -20,9 +21,46 @@ class _LineChartSampleState extends State<LineChartSample> {
   ];
 
   int selectedDataSet = 1; // Variable pour suivre le dataset sélectionné
+  List<FlSpot> dataSet = [];
 
   @override
   Widget build(BuildContext context) {
+
+    List<int> weekPopulation = widget.gameData.popHisto.week;
+    List<int> monthPopulation = widget.gameData.popHisto.month;
+    List<int> yearPopulation = widget.gameData.popHisto.year;
+
+    List<FlSpot> weekFlSpots = weekPopulation.asMap().entries.map((entry) {
+      int index = entry.key;
+      int value = entry.value;
+      return FlSpot(index.toDouble(), value.toDouble());
+    }).toList();
+
+    List<FlSpot> monthFlSpots = monthPopulation.asMap().entries.map((entry) {
+      int index = entry.key;
+      int value = entry.value;
+      return FlSpot(index.toDouble(), value.toDouble());
+    }).toList();
+
+    List<FlSpot> yearFlSpots = yearPopulation.asMap().entries.map((entry) {
+      int index = entry.key;
+      int value = entry.value;
+      return FlSpot(index.toDouble(), value.toDouble());
+    }).toList();
+
+    setState() {
+      switch (selectedDataSet) {
+        case 1:
+          return dataSet = weekFlSpots;
+        case 2:
+          return dataSet = monthFlSpots;
+        case 3:
+          return dataSet = yearFlSpots;
+        default:
+          return dataSet = weekFlSpots;
+      }
+    };
+
     return Stack(
       children: [
         Positioned(
@@ -71,21 +109,21 @@ class _LineChartSampleState extends State<LineChartSample> {
   }
 
   // Méthode pour construire un bouton avec un identifiant de data set et un texte
-  Widget _buildButton(int dataSet, String text) {
+  Widget _buildButton(int dataConfiguration, String text) {
     return SizedBox(
       width: 80,
       height: 34,
       child: TextButton(
         onPressed: () {
           setState(() {
-            selectedDataSet = dataSet; // Mettre à jour le data set sélectionné
+            selectedDataSet = dataConfiguration; // Mettre à jour le data set sélectionné
           });
         },
         child: Text(
           text,
           style: TextStyle(
             fontSize: 12,
-            color: selectedDataSet == dataSet ? Colors.white : Colors.white.withOpacity(0.5),
+            color: selectedDataSet == dataConfiguration ? Colors.white : Colors.white.withOpacity(0.5),
           ),
         ),
       ),
@@ -96,13 +134,13 @@ class _LineChartSampleState extends State<LineChartSample> {
   LineChartData _getSelectedData() {
     switch (selectedDataSet) {
       case 1:
-        return mainData();
+        return mainData(dataSet);
       case 2:
-        return altData1(); // Nouvelle méthode pour le data set 2
+        return altData1(dataSet);
       case 3:
-        return altData2(); // Nouvelle méthode pour le data set 3
+        return altData2(dataSet);
       default:
-        return mainData();
+        return mainData(dataSet);
     }
   }
 
@@ -265,7 +303,7 @@ class _LineChartSampleState extends State<LineChartSample> {
   }
 
   // Méthode pour générer les données pour le data set 1 (identique à mainData dans l'exemple initial)
-  LineChartData mainData() {
+  LineChartData mainData(List<FlSpot> dataSet) {
     return LineChartData(
       gridData: FlGridData(
         show: true,
@@ -320,21 +358,7 @@ class _LineChartSampleState extends State<LineChartSample> {
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: const [
-            FlSpot(0, 10036/10000),
-            FlSpot(1, 25322/10000),
-            FlSpot(2, 36565/10000),
-            FlSpot(3, 40790/10000),
-            FlSpot(4, 36764/10000),
-            FlSpot(5, 25738/10000),
-            FlSpot(6, 10620/10000),
-            FlSpot(7, 4489/10000),
-            FlSpot(8, 15579/10000),
-            FlSpot(9, 19562/10000),
-            FlSpot(10, 15329/10000),
-            FlSpot(11, 4076/10000),
-            FlSpot(12, 19562/10000),
-          ],
+          spots: dataSet,
           isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,
@@ -358,7 +382,7 @@ class _LineChartSampleState extends State<LineChartSample> {
   }
 
   // Méthode pour générer les données pour le data set 2 (à remplir avec les données appropriées)
-  LineChartData altData1() {
+  LineChartData altData1(List<FlSpot> dataSet) {
     return LineChartData(
       gridData: FlGridData(
         show: true,
@@ -413,21 +437,7 @@ class _LineChartSampleState extends State<LineChartSample> {
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: const [
-            FlSpot(0, 17907/10000),
-            FlSpot(1, 25299/10000),
-            FlSpot(2, 36551/10000),
-            FlSpot(3, 31674/10000),
-            FlSpot(4, 39646/10000),
-            FlSpot(5, 40760/10000),
-            FlSpot(6, 39794/10000),
-            FlSpot(7, 36831/10000),
-            FlSpot(8, 32040/10000),
-            FlSpot(9, 31674/10000),
-            FlSpot(10, 25713/10000),
-            FlSpot(11, 18456/10000),
-            FlSpot(12, 17907/10000),
-          ],
+          spots: dataSet,
           isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,
@@ -451,7 +461,7 @@ class _LineChartSampleState extends State<LineChartSample> {
   }
 
   // Méthode pour générer les données pour le data set 3 (à remplir avec les données appropriées)
-  LineChartData altData2() {
+  LineChartData altData2(List<FlSpot> dataSet) {
     return LineChartData(
       gridData: FlGridData(
         show: true,
@@ -506,21 +516,7 @@ class _LineChartSampleState extends State<LineChartSample> {
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: const [
-            FlSpot(0, 15302/10000),
-            FlSpot(1, 16357/10000),
-            FlSpot(2, 18874/10000),
-            FlSpot(3, 20132/10000),
-            FlSpot(4, 21390/10000),
-            FlSpot(5, 22649/10000),
-            FlSpot(6, 23907/10000),
-            FlSpot(7, 25165/10000),
-            FlSpot(8, 26423/10000),
-            FlSpot(9, 27682/10000),
-            FlSpot(10, 27682/10000),
-            FlSpot(11, 28940/10000),
-            FlSpot(12, 15302/10000),
-          ],
+          spots: dataSet,
           isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,
